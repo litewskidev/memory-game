@@ -2,11 +2,203 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Memory game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>YOOOO</h1>
+
+  <header>
+    <div class="main__nav">
+      <a href="#start-game">start game</a>
+      <a href="#solo-game">solo game</a>
+      <a href="#multi-game">multi game</a>
+    </div>
+  </header>
+
+  <div id="pages">
+    <section id="start-game">
+      <div class="container start__game__wrapper"></div>
+    </section>
+    <section id="solo-game">
+      <div class="container solo__game__wrapper"></div>
+    </section>
+    <section id="multi-game">
+      <div class="container multi__game__wrapper"></div>
+    </section>
+  </div>
+
+  <script id="template__start__game__widget" type="text/x-handlebars-template">
+    <section class="start__game__widget">
+      <div class="start__game__container">
+        <h1 class="memory__logo">memory</h1>
+        <div class="start__game__options">
+          <div class="game__options__box">
+            <p class="heading__h3">Select Theme</p>
+            <div class="options__box__medium">
+              <button class="btn btn__medium activeBtn">Numbers</button>
+              <button class="btn btn__medium">Icons</button>
+            </div>
+          </div>
+          <div class="game__options__box">
+            <p class="heading__h3">Number of Players</p>
+            <div class="options__box__small">
+              <button class="btn btn__small activeBtn">1</button>
+              <button class="btn btn__small">2</button>
+              <button class="btn btn__small">3</button>
+              <button class="btn btn__small">4</button>
+            </div>
+          </div>
+          <div class="game__options__box">
+            <p class="heading__h3">Grid Size</p>
+            <div class="options__box__medium">
+              <button class="btn btn__medium activeBtn">4x4</button>
+              <button class="btn btn__medium">6x6</button>
+            </div>
+          </div>
+          <div>
+            <button class="btn__big">Start Game</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </script>
+
+  <script id="template__solo__game__widget" type="text/x-handlebars-template">
+    <section class="solo__game__widget">
+      <div>
+        <img src="./images/logo.svg"/>
+        <div>
+          <button>Restart</button>
+          <button>New Game</button>
+        </div>
+      </div>
+
+      <div>
+        <!-- GAME BOARD -->
+
+      </div>
+
+      <div>
+        <div>
+          <p>Time</p>
+
+        </div>
+        <div>
+          <p>Moves</p>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="solo-end-game-modal">
+      <div class="solo__end__game__modal">
+        <div>
+          <p>You did it!</p>
+          <p>Game over! Here's how you got on...</p>
+        </div>
+        <div>
+          <p>Time Elapsed</p>
+          <p>{{ time }}</p>
+        </div>
+        <div>
+          <p>Moves Taken</p>
+          <p>{{ moves }} Moves</p>
+        </div>
+        <div>
+          <button>Restart</button>
+          <button>Setup New Game</button>
+        </div>
+      </div>
+    </section>
+  </script>
+
+  <script id="template__multi__game__widget" type="text/x-handlebars-template">
+    <section class="multi__game__widget">
+      <div>
+        <img src="./images/logo.svg"/>
+        <div>
+          <button>Restart</button>
+          <button>New Game</button>
+        </div>
+      </div>
+
+      <div>
+        <!-- GAME BOARD -->
+
+      </div>
+
+      <div>
+        <div>
+          <div>
+            <p>Player 1</p>
+            <p>{{ turn }}</p>
+          </div>
+          <p>Current Turn</p>
+        </div>
+        <div>
+          <div>
+            <p>Player 2</p>
+            <p>{{ turn }}</p>
+          </div>
+          <p>Current Turn</p>
+        </div>
+        <div>
+          <div>
+            <p>Player 3</p>
+            <p>{{ turn }}</p>
+          </div>
+          <p>Current Turn</p>
+        </div>
+        <div>
+          <div>
+            <p>Player 4</p>
+            <p>{{ turn }}</p>
+          </div>
+          <p>Current Turn</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="multi-end-game-modal">
+      <div class="multi__end__game__modal">
+        <div>
+          <p>{{ result }}</p>
+          <p>Game over! Here are the results...</p>
+        </div>
+        <div>
+          <div>
+            <p>Player {{ player }}</p>
+            <p>{{ pairs }} Pairs</p>
+          </div>
+          <div>
+            <p>Player {{ player }}</p>
+            <p>{{ pairs }} Pairs</p>
+          </div>
+          <div>
+            <p>Player {{ player }}</p>
+            <p>{{ pairs }} Pairs</p>
+          </div>
+          <div>
+            <p>Player {{ player }}</p>
+            <p>{{ pairs }} Pairs</p>
+          </div>
+        </div>
+        <div>
+          <button>Restart</button>
+          <button>Setup New Game</button>
+        </div>
+      </div>
+    </section>
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="js/app.js" type="module"></script>
 </body>
 </html>
