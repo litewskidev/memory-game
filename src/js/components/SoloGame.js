@@ -3,7 +3,7 @@ import { templates } from '../settings.js';
 class SoloGame {
   constructor(element) {
     const thisSoloGame = this;
-
+    
     thisSoloGame.render(element);
   }
 

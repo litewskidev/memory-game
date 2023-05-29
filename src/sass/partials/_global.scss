@@ -10,7 +10,29 @@ body {
   background: $white;
 }
 
+
 #pages {
+  > * {
+    display: none;
+  }
+
+  > .active {
+    display: block;
+  }
+}
+
+
+#solo-end-game-modal {
+  > * {
+    display: none;
+  }
+
+  > .active {
+    display: block;
+  }
+}
+
+#multi-end-game-modal {
   > * {
     display: none;
   }
