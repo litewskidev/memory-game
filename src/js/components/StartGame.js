@@ -1,3 +1,5 @@
+import SoloGame from './SoloGame.js';
+import MultiGame from './MultiGame.js';
 import { select, templates } from '../settings.js';
 
 class StartGame {
@@ -109,9 +111,11 @@ class StartGame {
       thisStartGame.deactivatePage('start-game');
 
       if (thisStartGame.players > 1) {
+        thisStartGame.initMultiGame();
         thisStartGame.activatePage('multi-game');
       }
       else {
+        this.initSoloGame();
         thisStartGame.activatePage('solo-game');
       }
     });
@@ -156,6 +160,20 @@ class StartGame {
     }
   }
 
+  initSoloGame() {
+    const thisStartGame = this;
+
+    const soloGameContainer = document.querySelector(select.containerOf.soloGame);
+    thisStartGame.soloGame = new SoloGame(soloGameContainer, thisStartGame.theme, thisStartGame.players, thisStartGame.grid);
+  }
+
+  initMultiGame() {
+    const thisStartGame = this;
+
+    const multiGameContainer = document.querySelector(select.containerOf.multiGame);
+    thisStartGame.multiGame = new MultiGame(multiGameContainer, thisStartGame.theme, thisStartGame.players, thisStartGame.grid);
+  }
+
   render(element) {
     const thisStartGame = this;
 
@@ -165,7 +183,7 @@ class StartGame {
     element.innerHTML = generatedHTML;
     thisStartGame.getElements(element);
     thisStartGame.initActions();
-    this.activatePage('start-game');
+    thisStartGame.activatePage('start-game');
   }
 }
 

@@ -13,17 +13,26 @@ export const select ={
   },
 
   modalOf: {
-    soloEndGame: '#solo-end-game-modal',
-    multiEndGame: '#multi-end-game-modal'
+    soloEndGame: '.solo-end-game-modal-wrapper',
+    multiEndGame: '.multi-end-game-modal-wrapper',
+    mobileMenu: '.mobile__menu__modal'
   },
 
-  nav: {
-    links: '.main__nav a'
+  button: {
+    menuButton: '.game__menu__btn',
+    menuResume: '#mobile-resume-btn',
+    menuNewGame: '#mobile-newgame-btn',
+    menuRestart: '#mobile-restart-btn'
   }
 };
 
 export const classNames = {
-  active: 'active'
+  active: 'active',
+  activeBtn: 'activeBtn',
+  activePlayer: 'active__player',
+  activeTurn: 'active__turn',
+  activePattern: 'active__pattern',
+  activeMenu: 'on'
 };
 
 export const templates = {

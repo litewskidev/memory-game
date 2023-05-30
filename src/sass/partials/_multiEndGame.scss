@@ -1,0 +1,46 @@
+.multi-end-game-modal-wrapper.active {
+  position: absolute;
+  top: 0;
+  background-color: rgb(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.multi__end__game__modal {
+  height: fit-content;
+  background-color: $white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  border-radius: 1.25rem;
+  margin: 10rem 0;
+  padding: 0 3.5rem;
+  padding-top: 3.188rem;
+  padding-bottom: 4.313rem;
+}
+
+.winner__player {
+  background-color: $mediumblue !important;
+
+  p {
+    color: $white !important;
+  }
+}
+
+@media (max-width: 540px) {
+
+  #multi-end-game-modal {
+    padding: 0 1.5rem;
+    display: block;
+  }
+
+  .multi__end__game__modal {
+    margin: 5.625rem 0;
+    border-radius: 0.625rem;
+    padding: 1.5rem;
+    padding-top: 2rem;
+    gap: 1.5rem;
+  }
+}

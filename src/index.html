@@ -64,11 +64,16 @@
 
   <script id="template__solo__game__widget" type="text/x-handlebars-template">
     <section class="solo__game__widget">
-      <div>
-        <img src="./images/logo.svg"/>
-        <div>
-          <button>Restart</button>
-          <button>New Game</button>
+      <div class="game__header">
+        <div class="game__logo">
+          <img src="./images/logo.svg"/>
+        </div>
+        <div class="game__btns">
+          <button class="game__restart__btn">Restart</button>
+          <button class="game__newgame__btn">New Game</button>
+        </div>
+        <div class="game__menu">
+          <button class="game__menu__btn">Menu</button>
         </div>
       </div>
 
@@ -77,47 +82,65 @@
 
       </div>
 
-      <div>
-        <div>
+      <div class="game__footer">
+        <div class="game__info">
           <p>Time</p>
-
+          <p>1:59</p>
         </div>
-        <div>
+        <div class="game__info">
           <p>Moves</p>
-
+          <p>39</p>
         </div>
       </div>
     </section>
 
-    <section id="solo-end-game-modal">
+    <section class="solo-end-game-modal-wrapper">
       <div class="solo__end__game__modal">
-        <div>
-          <p>You did it!</p>
-          <p>Game over! Here's how you got on...</p>
+        <div class="end__game__header">
+          <p class="heading__h1">You did it!</p>
+          <p class="text__body">Game over! Here's how you got on...</p>
         </div>
-        <div>
-          <p>Time Elapsed</p>
-          <p>{{ time }}</p>
+        <div class="end__game__info__box">
+          <div class="end__game__info">
+            <p>Time Elapsed</p>
+            <p>1:53</p>
+          </div>
+          <div class="end__game__info">
+            <p>Moves Taken</p>
+            <p>39 Moves</p>
+          </div>
         </div>
-        <div>
-          <p>Moves Taken</p>
-          <p>{{ moves }} Moves</p>
-        </div>
-        <div>
-          <button>Restart</button>
-          <button>Setup New Game</button>
+        <div class="end__game__btns">
+          <button class="end__game__restart__btn">Restart</button>
+          <button class="end__game__newgame__btn">Setup New Game</button>
         </div>
       </div>
     </section>
+
+    <div class="mobile__menu__modal">
+      <div class="mobile__menu__modal__inner">
+        <div class="mobile__menu__modal__options">
+          <button id="mobile-restart-btn" class="mobile__menu__modal__btn active__menu__btn">Restart</button>
+          <button id="mobile-newgame-btn" class="mobile__menu__modal__btn">New Game</button>
+          <button id="mobile-resume-btn" class="mobile__menu__modal__btn">Resume Game</button>
+          <button id="endgame-modal-test" class="mobile__menu__modal__btn active__menu__btn">Test</button>
+        </div>
+      </div>
+    </div>
   </script>
 
   <script id="template__multi__game__widget" type="text/x-handlebars-template">
     <section class="multi__game__widget">
-      <div>
-        <img src="./images/logo.svg"/>
-        <div>
-          <button>Restart</button>
-          <button>New Game</button>
+      <div class="game__header">
+        <div class="game__logo">
+          <img src="./images/logo.svg"/>
+        </div>
+        <div class="game__btns">
+          <button class="game__restart__btn">Restart</button>
+          <button class="game__newgame__btn">New Game</button>
+        </div>
+        <div class="game__menu">
+          <button class="game__menu__btn">Menu</button>
         </div>
       </div>
 
@@ -126,68 +149,102 @@
 
       </div>
 
-      <div>
-        <div>
-          <div>
+      <div class="game__footer">
+        <div class="multi__game__player__box">
+          <div class="multi__active__player__pattern active__pattern"></div>
+          <div class="multi__game__player">
+            <div class="game__info active__player">
+              <p class="player__indicator__desktop">Player 1</p>
+              <p class="player__indicator__mobile">P1</p>
+              <p>4</p>
+            </div>
+            <div class="multi__game__info__current active__turn">
+              <p>Current Turn</p>
+            </div>
+          </div>
+        </div>
+        <div class="multi__game__player__box">
+          <div class="multi__active__player__pattern"></div>
+          <div class="multi__game__player">
+            <div class="game__info">
+              <p class="player__indicator__desktop">Player 2</p>
+              <p class="player__indicator__mobile">P2</p>
+              <p>4</p>
+            </div>
+            <div class="multi__game__info__current">
+              <p>Current Turn</p>
+            </div>
+          </div>
+        </div>
+        <div class="multi__game__player__box">
+          <div class="multi__active__player__pattern"></div>
+          <div class="multi__game__player">
+            <div class="game__info">
+              <p class="player__indicator__desktop">Player 3</p>
+              <p class="player__indicator__mobile">P3</p>
+              <p>2</p>
+            </div>
+            <div class="multi__game__info__current">
+              <p>Current Turn</p>
+            </div>
+          </div>
+        </div>
+        <div class="multi__game__player__box">
+          <div class="multi__active__player__pattern"></div>
+          <div class="multi__game__player">
+            <div class="game__info">
+              <p class="player__indicator__desktop">Player 4</p>
+              <p class="player__indicator__mobile">P4</p>
+              <p>0</p>
+            </div>
+            <div class="multi__game__info__current">
+              <p>Current Turn</p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="multi-end-game-modal-wrapper">
+      <div class="multi__end__game__modal">
+        <div class="end__game__header">
+          <p class="heading__h1">{{ result }} Player 3 Wins!</p>
+          <p class="text__body">Game over! Here are the results...</p>
+        </div>
+        <div class="end__game__info__box">
+          <div class="end__game__info winner__player">
+            <p>Player 3 (Winner!)</p>
+            <p>8 Pairs</p>
+          </div>
+          <div class="end__game__info">
             <p>Player 1</p>
-            <p>{{ turn }}</p>
+            <p>4 Pairs</p>
           </div>
-          <p>Current Turn</p>
-        </div>
-        <div>
-          <div>
+          <div class="end__game__info">
             <p>Player 2</p>
-            <p>{{ turn }}</p>
+            <p>3 Pairs</p>
           </div>
-          <p>Current Turn</p>
-        </div>
-        <div>
-          <div>
-            <p>Player 3</p>
-            <p>{{ turn }}</p>
-          </div>
-          <p>Current Turn</p>
-        </div>
-        <div>
-          <div>
+          <div class="end__game__info">
             <p>Player 4</p>
-            <p>{{ turn }}</p>
+            <p>1 Pairs</p>
           </div>
-          <p>Current Turn</p>
+        </div>
+        <div class="end__game__btns">
+          <button class="end__game__restart__btn">Restart</button>
+          <button class="end__game__newgame__btn">Setup New Game</button>
         </div>
       </div>
     </section>
 
-    <section id="multi-end-game-modal">
-      <div class="multi__end__game__modal">
-        <div>
-          <p>{{ result }}</p>
-          <p>Game over! Here are the results...</p>
-        </div>
-        <div>
-          <div>
-            <p>Player {{ player }}</p>
-            <p>{{ pairs }} Pairs</p>
-          </div>
-          <div>
-            <p>Player {{ player }}</p>
-            <p>{{ pairs }} Pairs</p>
-          </div>
-          <div>
-            <p>Player {{ player }}</p>
-            <p>{{ pairs }} Pairs</p>
-          </div>
-          <div>
-            <p>Player {{ player }}</p>
-            <p>{{ pairs }} Pairs</p>
-          </div>
-        </div>
-        <div>
-          <button>Restart</button>
-          <button>Setup New Game</button>
+    <div class="mobile__menu__modal">
+      <div class="mobile__menu__modal__inner">
+        <div class="mobile__menu__modal__options">
+          <button id="mobile-restart-btn" class="mobile__menu__modal__btn active__menu__btn">Restart</button>
+          <button id="mobile-newgame-btn" class="mobile__menu__modal__btn">New Game</button>
+          <button id="mobile-resume-btn" class="mobile__menu__modal__btn">Resume Game</button>
+          <button id="endgame-modal-test" class="mobile__menu__modal__btn active__menu__btn">Test</button>
         </div>
       </div>
-    </section>
+    </div>
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>

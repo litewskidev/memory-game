@@ -3,13 +3,13 @@
 }
 
 body {
+  cursor: default;
   margin: 0;
   padding: 0;
   font-family: $font-text;
   font-size: $base-size;
   background: $white;
 }
-
 
 #pages {
   > * {
@@ -21,23 +21,18 @@ body {
   }
 }
 
-
-#solo-end-game-modal {
-  > * {
+.solo-end-game-modal-wrapper {
     display: none;
   }
 
-  > .active {
-    display: block;
+.multi-end-game-modal-wrapper {
+    display: none;
   }
+
+.mobile__menu__modal {
+  display: none;
 }
 
-#multi-end-game-modal {
-  > * {
-    display: none;
-  }
-
-  > .active {
-    display: block;
-  }
+.mobile__menu__modal.on {
+  display: block;
 }

@@ -1,0 +1,14 @@
+.solo__game__widget {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4.188rem;
+}
+
+@media (max-width: 540px) {
+  .solo__game__widget {
+    margin-top: 0;
+    padding: 1.5rem;
+  }
+}

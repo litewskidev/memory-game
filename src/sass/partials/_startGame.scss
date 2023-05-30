@@ -1,8 +1,10 @@
 .start__game__widget {
   background-color: $darkblue;
-  display: flex;
+  display: block;
   justify-content: center;
   height: fit-content;
+  width: 100%;
+
 
   h1 {
     color: $white;
@@ -14,12 +16,15 @@
 }
 
 .start__game__container {
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4.875rem;
-  margin-top: 9.625rem;
-  margin-bottom: 11.438rem;
+  padding: 0 27.35%;
+  padding-top: 9.625rem;
+  padding-bottom: 11.438rem;
 }
 
 .start__game__options {
@@ -51,11 +56,11 @@
 .btn {
   cursor: pointer;
   border: none;
-  border-radius: 26px;
+  border-radius: 1.625rem;
   color: $white;
   font-weight: 700;
-  font-size: 26px;
-  line-height: 32px;
+  font-size: 1.625rem;
+  line-height: 2rem;
   background-color: $lightblue;
 
   &:hover {
@@ -65,25 +70,25 @@
 
 .btn__small {
   width: 100%;
-  height: 52px;
+  height: 3.25rem;
 }
 
 .btn__medium {
   width: 100%;
-  height: 52px;
+  height: 3.25rem;
 }
 
 .btn__big {
   cursor: pointer;
-  width: 541px;
-  height: 70px;
+  width: 100%;
+  height: 4.375rem;
   border: none;
-  border-radius: 35px;
+  border-radius: 2.188rem;
   color: $white;
   background-color: $orange;
   font-weight: 700;
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 2rem;
+  line-height: 2.5rem;
 
   &:hover {
     opacity: 0.7;
@@ -91,11 +96,66 @@
 }
 
 .activeBtn {
-  background-color: $darkblue;
+  background-color: $mediumblue;
 }
 
 @media (max-width: 540px) {
+
+  .start__game__container {
+    padding: 0 1.5rem;
+    padding-top: 5rem;
+    padding-bottom: 7.25rem;
+    gap: 2.813rem;
+  }
+
+  .memory__logo {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .start__game__options {
+    border-radius: 0.625rem;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .game__options__box {
+    gap: 0.688rem;
+    p:first-of-type {
+      font-size: 15px;
+      line-height: 19px;
+    }
+  }
+
+  .options__box__small {
+    gap: 0.625rem;
+  }
+
+  .options__box__medium {
+    gap: 0.688rem;
+  }
+
+  .btn {
+    font-size: 16px;
+    line-height: 20px;
+
+    &:hover {
+      background-color: $mediumblue;
+    }
+  }
+
+  .btn__small {
+    height: 2.5rem;
+  }
+
+  .btn__medium {
+    height: 2.5rem;
+  }
+
   .btn__big {
-    width: 100%;
+    height: 3rem;
+    margin-top: 0.5rem;
+    font-size: 18px;
+    line-height: 22px;
   }
 }

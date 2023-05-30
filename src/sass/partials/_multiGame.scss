@@ -1,0 +1,97 @@
+.multi__game__widget {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4.188rem;
+}
+
+.multi__game__player__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.multi__game__player {
+  display: flex;
+  flex-direction: column;
+  gap: 1.438rem;
+}
+
+//  ACTIVE PLAYER
+.player__indicator__mobile {
+  display: none;
+}
+
+.multi__active__player__pattern {
+  display: none;
+}
+
+.multi__game__info__current {
+  display: none;
+}
+
+.active__player {
+  background-color: $orange !important;
+  p {
+    color: $white !important;
+  }
+}
+
+.multi__active__player__pattern.active__pattern {
+    display: block;
+    margin-top: -19px;
+    border-color: transparent transparent $orange transparent;
+    border-style: solid;
+    border-width: 0px 19px 19px 19px;
+    height: 0px;
+    width: 0px;
+}
+
+.multi__game__info__current.active__turn {
+  display: block;
+  text-align: center;
+  margin-bottom: -39px;
+
+  p {
+    color: $darkblue;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 5px;
+  }
+}
+
+@media (max-width: 540px) {
+
+  .player__indicator__desktop {
+    display: none;
+  }
+
+  .multi__game__info__current.active__turn {
+    display: none;
+  }
+
+  .player__indicator__mobile {
+    display: block;
+    padding: 0 24px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 19px;
+    color: $pigeon;
+  }
+
+  .multi__active__player__pattern.active__pattern {
+    margin-top: -8px;
+    border-width: 0px 8px 8px 8px;
+  }
+
+  .multi__game__widget {
+    margin-top: 0;
+    padding: 1.5rem;
+  }
+
+  .game__footer {
+    gap: 1.4rem;
+  }
+}
