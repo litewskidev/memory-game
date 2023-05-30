@@ -1,0 +1,719 @@
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+.no-spacing {
+  margin: 0;
+  padding: 0;
+}
+
+.memory__logo {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 3.125rem;
+}
+
+.heading__h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 3.75rem;
+}
+
+.heading__h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.heading__h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.563rem;
+}
+
+.text__body {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+}
+
+.number__6x6 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.75rem;
+  line-height: 3.438rem;
+}
+
+.number__4x4 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 4.313rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  cursor: default;
+  margin: 0;
+  padding: 0;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 1rem;
+  background: hsl(0, 0%, 99%);
+}
+
+#pages > * {
+  display: none;
+}
+#pages > .active {
+  display: block;
+}
+
+.solo-end-game-modal-wrapper {
+  display: none;
+}
+
+.multi-end-game-modal-wrapper {
+  display: none;
+}
+
+.mobile__menu__modal {
+  display: none;
+}
+
+.mobile__menu__modal.on {
+  display: block;
+}
+
+.start__game__widget {
+  background-color: hsl(206, 45%, 15%);
+  display: block;
+  justify-content: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+}
+.start__game__widget h1 {
+  color: hsl(0, 0%, 99%);
+}
+.start__game__widget p {
+  color: hsl(203, 22%, 55%);
+}
+
+.start__game__container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.875rem;
+  padding: 0 27.35%;
+  padding-top: 9.625rem;
+  padding-bottom: 11.438rem;
+}
+
+.start__game__options {
+  background: hsl(0, 0%, 99%);
+  border-radius: 1.25rem;
+  padding: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.game__options__box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.options__box__small {
+  display: flex;
+  gap: 1.375rem;
+}
+
+.options__box__medium {
+  display: flex;
+  gap: 1.875rem;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 1.625rem;
+  color: hsl(0, 0%, 99%);
+  font-weight: 700;
+  font-size: 1.625rem;
+  line-height: 2rem;
+  background-color: hsl(203, 28%, 79%);
+}
+.btn:hover {
+  background-color: hsl(205, 37%, 55%);
+}
+
+.btn__small {
+  width: 100%;
+  height: 3.25rem;
+}
+
+.btn__medium {
+  width: 100%;
+  height: 3.25rem;
+}
+
+.btn__big {
+  cursor: pointer;
+  width: 100%;
+  height: 4.375rem;
+  border: none;
+  border-radius: 2.188rem;
+  color: hsl(0, 0%, 99%);
+  background-color: hsl(37, 98%, 54%);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+.btn__big:hover {
+  opacity: 0.7;
+}
+
+.activeBtn {
+  background-color: hsl(205, 30%, 27%);
+}
+
+@media (max-width: 540px) {
+  .start__game__container {
+    padding: 0 1.5rem;
+    padding-top: 5rem;
+    padding-bottom: 7.25rem;
+    gap: 2.813rem;
+  }
+  .memory__logo {
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .start__game__options {
+    border-radius: 0.625rem;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  .game__options__box {
+    gap: 0.688rem;
+  }
+  .game__options__box p:first-of-type {
+    font-size: 15px;
+    line-height: 19px;
+  }
+  .options__box__small {
+    gap: 0.625rem;
+  }
+  .options__box__medium {
+    gap: 0.688rem;
+  }
+  .btn {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .btn:hover {
+    background-color: hsl(205, 30%, 27%);
+  }
+  .btn__small {
+    height: 2.5rem;
+  }
+  .btn__medium {
+    height: 2.5rem;
+  }
+  .btn__big {
+    height: 3rem;
+    margin-top: 0.5rem;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+.mobile__menu__modal {
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+.mobile__menu__modal__inner {
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: hsl(0, 0%, 99%);
+  text-align: center;
+  gap: 2.5rem;
+  border-radius: 0.625rem;
+  margin: 13.85rem 0;
+  padding: 1.5rem;
+}
+
+.mobile__menu__modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile__menu__modal__btn {
+  border-radius: 1.625rem;
+  border: none;
+  background-color: hsl(203, 25%, 90%);
+  padding-top: 0.75rem;
+  padding-bottom: 0.875rem;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: hsl(205, 30%, 27%);
+}
+
+.active__menu__btn {
+  background-color: hsl(37, 98%, 54%);
+  color: hsl(0, 0%, 99%);
+}
+
+.game__header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10.313rem;
+}
+
+.game__btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.game__menu {
+  display: none;
+}
+
+.game__restart__btn {
+  cursor: pointer;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  background-color: hsl(37, 98%, 54%);
+  border: none;
+  border-radius: 1.625rem;
+  padding: 0.813rem 1.75rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.563rem;
+  color: hsl(0, 0%, 99%);
+}
+.game__restart__btn:hover {
+  opacity: 0.7;
+}
+
+.game__newgame__btn {
+  cursor: pointer;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  background-color: hsl(203, 25%, 90%);
+  border: none;
+  border-radius: 1.625rem;
+  padding: 0.813rem 1.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.563rem;
+  color: hsl(205, 30%, 27%);
+}
+.game__newgame__btn:hover {
+  background-color: hsl(205, 37%, 55%);
+  color: hsl(0, 0%, 99%);
+}
+
+.game__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.875rem;
+}
+
+.game__info {
+  width: 15.938rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: hsl(203, 25%, 90%);
+  border: none;
+  border-radius: 0.625rem;
+  padding: 1rem 0;
+  padding-right: 1.5rem;
+  padding-left: 1.313rem;
+}
+.game__info p:first-of-type {
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  color: hsl(203, 22%, 55%);
+}
+.game__info p:last-of-type {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  color: hsl(205, 30%, 27%);
+}
+
+@media (max-width: 540px) {
+  .game__btns {
+    display: none;
+  }
+  .game__logo img {
+    width: 70%;
+  }
+  .game__menu {
+    display: block;
+  }
+  .game__menu__btn {
+    cursor: pointer;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    background-color: hsl(37, 98%, 54%);
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0.625rem 1.156rem;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: hsl(0, 0%, 99%);
+  }
+  .game__header {
+    padding: 0;
+  }
+  .game__footer {
+    width: 100%;
+    gap: 1.563rem;
+  }
+  .game__info {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    padding: 0.625rem 0;
+    width: 100%;
+    border-radius: 5px;
+  }
+  .game__info p:first-of-type {
+    font-size: 15px;
+    line-height: 19px;
+  }
+  .game__info p:last-of-type {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+.end__game__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.end__game__header p:first-of-type {
+  color: hsl(206, 45%, 15%);
+}
+.end__game__header p:last-of-type {
+  color: hsl(203, 22%, 55%);
+}
+
+.end__game__info__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.end__game__info {
+  width: 33.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: hsl(203, 25%, 90%);
+  border: none;
+  border-radius: 0.625rem;
+  padding: 1rem 2rem;
+}
+.end__game__info p:first-of-type {
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  color: hsl(203, 22%, 55%);
+}
+.end__game__info p:last-of-type {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  color: hsl(205, 30%, 27%);
+}
+
+.end__game__btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+}
+
+.end__game__restart__btn {
+  cursor: pointer;
+  width: 16.5rem;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  background-color: hsl(37, 98%, 54%);
+  border: none;
+  border-radius: 1.625rem;
+  padding: 0.813rem 0;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.563rem;
+  color: hsl(0, 0%, 99%);
+}
+.end__game__restart__btn:hover {
+  opacity: 0.7;
+}
+
+.end__game__newgame__btn {
+  cursor: pointer;
+  width: 16.5rem;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  background-color: hsl(203, 25%, 90%);
+  border: none;
+  border-radius: 1.625rem;
+  padding: 0.813rem 0;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.563rem;
+  color: hsl(205, 30%, 27%);
+}
+.end__game__newgame__btn:hover {
+  background-color: hsl(205, 37%, 55%);
+  color: hsl(0, 0%, 99%);
+}
+
+@media (max-width: 540px) {
+  .end__game__header {
+    gap: 0.563rem;
+  }
+  .end__game__header p:first-of-type {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .end__game__header p:last-of-type {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .end__game__info__box {
+    gap: 0.5rem;
+  }
+  .end__game__info {
+    width: 100%;
+    background-color: hsl(203, 25%, 90%);
+    padding: 1rem;
+  }
+  .end__game__info p:first-of-type {
+    font-size: 13px;
+    line-height: 16px;
+  }
+  .end__game__info p:last-of-type {
+    font-size: 20px;
+    line-height: 25px;
+  }
+  .end__game__btns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .end__game__restart__btn {
+    width: 100%;
+  }
+  .end__game__newgame__btn {
+    width: 100%;
+  }
+}
+.solo__game__widget {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4.188rem;
+}
+
+@media (max-width: 540px) {
+  .solo__game__widget {
+    margin-top: 0;
+    padding: 1.5rem;
+  }
+}
+.solo-end-game-modal-wrapper.active {
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.solo__end__game__modal {
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: hsl(0, 0%, 99%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  border-radius: 1.25rem;
+  margin: 16.063rem 0;
+  padding: 0 3.5rem;
+  padding-top: 3.188rem;
+  padding-bottom: 4.313rem;
+}
+
+@media (max-width: 540px) {
+  #solo-end-game-modal {
+    padding: 0 1.5rem;
+    display: block;
+  }
+  .solo__end__game__modal {
+    margin: 9.125rem 0;
+    border-radius: 0.625rem;
+    padding: 1.5rem;
+    padding-top: 2rem;
+    gap: 1.5rem;
+  }
+}
+.multi__game__widget {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4.188rem;
+}
+
+.multi__game__player__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.multi__game__player {
+  display: flex;
+  flex-direction: column;
+  gap: 1.438rem;
+}
+
+.player__indicator__mobile {
+  display: none;
+}
+
+.multi__active__player__pattern {
+  display: none;
+}
+
+.multi__game__info__current {
+  display: none;
+}
+
+.active__player {
+  background-color: hsl(37, 98%, 54%) !important;
+}
+.active__player p {
+  color: hsl(0, 0%, 99%) !important;
+}
+
+.multi__active__player__pattern.active__pattern {
+  display: block;
+  margin-top: -19px;
+  border-color: transparent transparent hsl(37, 98%, 54%) transparent;
+  border-style: solid;
+  border-width: 0px 19px 19px 19px;
+  height: 0px;
+  width: 0px;
+}
+
+.multi__game__info__current.active__turn {
+  display: block;
+  text-align: center;
+  margin-bottom: -39px;
+}
+.multi__game__info__current.active__turn p {
+  color: hsl(206, 45%, 15%);
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 5px;
+}
+
+@media (max-width: 540px) {
+  .player__indicator__desktop {
+    display: none;
+  }
+  .multi__game__info__current.active__turn {
+    display: none;
+  }
+  .player__indicator__mobile {
+    display: block;
+    padding: 0 24px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 19px;
+    color: hsl(203, 22%, 55%);
+  }
+  .multi__active__player__pattern.active__pattern {
+    margin-top: -8px;
+    border-width: 0px 8px 8px 8px;
+  }
+  .multi__game__widget {
+    margin-top: 0;
+    padding: 1.5rem;
+  }
+  .game__footer {
+    gap: 1.4rem;
+  }
+}
+.multi-end-game-modal-wrapper.active {
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.multi__end__game__modal {
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: hsl(0, 0%, 99%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  border-radius: 1.25rem;
+  margin: 10rem 0;
+  padding: 0 3.5rem;
+  padding-top: 3.188rem;
+  padding-bottom: 4.313rem;
+}
+
+.winner__player {
+  background-color: hsl(205, 30%, 27%) !important;
+}
+.winner__player p {
+  color: hsl(0, 0%, 99%) !important;
+}
+
+@media (max-width: 540px) {
+  #multi-end-game-modal {
+    padding: 0 1.5rem;
+    display: block;
+  }
+  .multi__end__game__modal {
+    margin: 5.625rem 0;
+    border-radius: 0.625rem;
+    padding: 1.5rem;
+    padding-top: 2rem;
+    gap: 1.5rem;
+  }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9zYXNzL3BhcnRpYWxzL19zZXR0aW5ncy5zY3NzIiwic3R5bGUuY3NzIiwiLi4vLi4vc3JjL3Nhc3MvcGFydGlhbHMvX2dsb2JhbC5zY3NzIiwiLi4vLi4vc3JjL3Nhc3MvcGFydGlhbHMvX3N0YXJ0R2FtZS5zY3NzIiwiLi4vLi4vc3JjL3Nhc3MvcGFydGlhbHMvX21vYmlsZU1lbnUuc2NzcyIsIi4uLy4uL3NyYy9zYXNzL3BhcnRpYWxzL19nYW1lLnNjc3MiLCIuLi8uLi9zcmMvc2Fzcy9wYXJ0aWFscy9fZW5kR2FtZS5zY3NzIiwiLi4vLi4vc3JjL3Nhc3MvcGFydGlhbHMvX3NvbG9HYW1lLnNjc3MiLCIuLi8uLi9zcmMvc2Fzcy9wYXJ0aWFscy9fc29sb0VuZEdhbWUuc2NzcyIsIi4uLy4uL3NyYy9zYXNzL3BhcnRpYWxzL19tdWx0aUdhbWUuc2NzcyIsIi4uLy4uL3NyYy9zYXNzL3BhcnRpYWxzL19tdWx0aUVuZEdhbWUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFvQkE7RUFDRSxTQUFBO0FDbkJGOztBRHNCQTtFQUNFLFNBQUE7RUFDQSxVQUFBO0FDbkJGOztBRHNCQTtFQUNFLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLHFCQUFBO0FDbkJGOztBRHNCQTtFQUNFLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0Esb0JBQUE7QUNuQkY7O0FEc0JBO0VBQ0Usa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxtQkFBQTtBQ25CRjs7QURzQkE7RUFDRSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtBQ25CRjs7QURzQkE7RUFDRSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxxQkFBQTtBQ25CRjs7QURzQkE7RUFDRSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtBQ25CRjs7QURzQkE7RUFDRSxrQkFBQTtFQUNBLGdCQUFBO0VB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bmtCQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtFQUNBLG1CQUFBO0FSc2tCRjs7QVFua0JBO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsYUFBQTtBUnNrQkY7O0FRbGtCQTtFQUNFLGFBQUE7QVJxa0JGOztBUWxrQkE7RUFDRSxhQUFBO0FScWtCRjs7QVFsa0JBO0VBQ0UsYUFBQTtBUnFrQkY7O0FRbGtCQTtFQUNFLDhDQUFBO0FScWtCRjtBUXBrQkU7RUFDRSxpQ0FBQTtBUnNrQko7O0FRbGtCQTtFQUNJLGNBQUE7RUFDQSxpQkFBQTtFQUNBLG1FQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQ0FBQTtFQUNBLFdBQUE7RUFDQSxVQUFBO0FScWtCSjs7QVFsa0JBO0VBQ0UsY0FBQTtFQUNBLGtCQUFBO0VBQ0Esb0JBQUE7QVJxa0JGO0FRbmtCRTtFQUNFLHlCVHBETztFU3FEUCxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLG1CQUFBO0FScWtCSjs7QVFqa0JBO0VBRUU7SUFDRSxhQUFBO0VSbWtCRjtFUWhrQkE7SUFDRSxhQUFBO0VSa2tCRjtFUS9qQkE7SUFDRSxjQUFBO0lBQ0EsZUFBQTtJQUNBLGdCQUFBO0lBQ0EsZUFBQTtJQUNBLGlCQUFBO0lBQ0EseUJUMUVLO0VDMm9CUDtFUTlqQkE7SUFDRSxnQkFBQTtJQUNBLDZCQUFBO0VSZ2tCRjtFUTdqQkE7SUFDRSxhQUFBO0lBQ0EsZUFBQTtFUitqQkY7RVE1akJBO0lBQ0UsV0FBQTtFUjhqQkY7QUFDRjtBUzdwQkE7RUFDRSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxvQ0FBQTtFQUNBLGFBQUE7RUFDQSx1QkFBQTtFQUNBLFdBQUE7QVQrcEJGOztBUzVwQkE7RUFDRSx3QkFBQTtFQUFBLG1CQUFBO0VBQ0EsaUNWSE07RVVJTixrQkFBQTtFQUNBLGFBQUE7RUFDQSxzQkFBQTtFQUNBLFdBQUE7RUFDQSxzQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLHFCQUFBO0VBQ0Esd0JBQUE7QVQrcEJGOztBUzVwQkE7RUFDRSwrQ0FBQTtBVCtwQkY7QVM3cEJFO0VBQ0UsaUNBQUE7QVQrcEJKOztBUzNwQkE7RUFFRTtJQUNFLGlCQUFBO0lBQ0EsY0FBQTtFVDZwQkY7RVMxcEJBO0lBQ0Usa0JBQUE7SUFDQSx1QkFBQTtJQUNBLGVBQUE7SUFDQSxpQkFBQTtJQUNBLFdBQUE7RVQ0cEJGO0FBQ0YiLCJmaWxlIjoic3R5bGUuY3NzIn0= */
