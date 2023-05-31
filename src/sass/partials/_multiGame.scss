@@ -33,19 +33,20 @@
 
 .active__player {
   background-color: $orange !important;
+
   p {
     color: $white !important;
   }
 }
 
 .multi__active__player__pattern.active__pattern {
-    display: block;
-    margin-top: -19px;
-    border-color: transparent transparent $orange transparent;
-    border-style: solid;
-    border-width: 0px 19px 19px 19px;
-    height: 0px;
-    width: 0px;
+  display: block;
+  margin-top: -19px;
+  border-color: transparent transparent $orange transparent;
+  border-style: solid;
+  border-width: 0px 19px 19px 19px;
+  height: 0px;
+  width: 0px;
 }
 
 .multi__game__info__current.active__turn {
@@ -63,7 +64,6 @@
 }
 
 @media (max-width: 540px) {
-
   .player__indicator__desktop {
     display: none;
   }
