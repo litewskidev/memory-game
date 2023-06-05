@@ -51,6 +51,7 @@
 }
 
 .game__footer {
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +62,7 @@
   width: 15.938rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: $info;
   border: none;
   border-radius: 0.625rem;

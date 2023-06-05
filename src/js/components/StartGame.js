@@ -1,6 +1,6 @@
 import SoloGame from './SoloGame.js';
 import MultiGame from './MultiGame.js';
-import { select, templates } from '../settings.js';
+import { classNames, select, templates } from '../settings.js';
 
 class StartGame {
   constructor(element) {
@@ -14,7 +14,8 @@ class StartGame {
     thisStartGame.render(element);
   }
 
-  getElements(element) {
+  //  START
+  getElementsStart(element) {
     const thisStartGame = this;
 
     thisStartGame.dom.wrapper = element;
@@ -31,7 +32,7 @@ class StartGame {
     thisStartGame.dom.allPlayersBtn = [thisStartGame.dom.onePlayerBtn, thisStartGame.dom.twoPlayersBtn, thisStartGame.dom.threePlayersBtn, thisStartGame.dom.fourPlayersBtn];
   }
 
-  initActions() {
+  initActionsStart() {
     const thisStartGame = this;
 
     thisStartGame.dom.numbersBtn.addEventListener('click', e => {
@@ -160,18 +161,78 @@ class StartGame {
     }
   }
 
+  //  GAME
+  getElementsGame() {
+    const thisGame = this;
+
+    thisGame.dom.wrapper = thisGame.element;
+    thisGame.menuBtn = thisGame.element.querySelector(select.button.menuButton);
+    thisGame.menuModal = thisGame.element.querySelector(select.modalOf.mobileMenu);
+    thisGame.resumeBtn = thisGame.element.querySelector(select.button.menuResume);
+    thisGame.restartBtn = thisGame.element.querySelector(select.button.menuRestart);
+    thisGame.newGameBtn = thisGame.element.querySelector(select.button.menuNewGame);
+
+    thisGame.testBtn = thisGame.element.querySelector('#endgame-modal-test');
+    thisGame.restartTestBtn = thisGame.element.querySelector('.end__game__newgame__btn');
+    thisGame.endGameModal = thisGame.element.querySelector(select.modalOf.endGame);
+  }
+
+  initActionsGame() {
+    const thisGame = this;
+
+    thisGame.menuBtn.addEventListener('click', e => {
+      e.preventDefault();
+      thisGame.menuModal.classList.add(classNames.activeMenu);
+    });
+
+    thisGame.resumeBtn.addEventListener('click', e => {
+      e.preventDefault();
+      thisGame.menuModal.classList.remove(classNames.activeMenu);
+    });
+
+    thisGame.restartBtn.addEventListener('click', e => {
+      e.preventDefault();
+      thisGame.render();
+    });
+
+    thisGame.newGameBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+
+
+    //  TEST BTN
+    thisGame.testBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      thisGame.menuModal.classList.remove(classNames.activeMenu);
+      thisGame.endGameModal.classList.add(classNames.active);
+    });
+
+    thisGame.restartTestBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+  }
+
   initSoloGame() {
     const thisStartGame = this;
 
     const soloGameContainer = document.querySelector(select.containerOf.soloGame);
-    thisStartGame.soloGame = new SoloGame(soloGameContainer, thisStartGame.theme, thisStartGame.players, thisStartGame.grid);
+    thisStartGame.soloGame = new SoloGame(soloGameContainer, thisStartGame.theme, thisStartGame.players, thisStartGame.grid, thisStartGame.getElementsGame, thisStartGame.initActionsGame);
+  }
+
+  initPlayers(players) {
+    const allPlayers = [];
+    for(let i = 1; i <= players; i++) {
+      const player = `Player ${i}`;
+      allPlayers.push(player);
+    }
+    return allPlayers;
   }
 
   initMultiGame() {
     const thisStartGame = this;
 
     const multiGameContainer = document.querySelector(select.containerOf.multiGame);
-    thisStartGame.multiGame = new MultiGame(multiGameContainer, thisStartGame.theme, thisStartGame.players, thisStartGame.grid);
+    thisStartGame.multiGame = new MultiGame(multiGameContainer, thisStartGame.theme, thisStartGame.players, thisStartGame.grid, thisStartGame.getElementsGame, thisStartGame.initActionsGame, this.initPlayers);
   }
 
   render(element) {
@@ -181,8 +242,8 @@ class StartGame {
     thisStartGame.dom = {};
     thisStartGame.dom.wrapper = element;
     element.innerHTML = generatedHTML;
-    thisStartGame.getElements(element);
-    thisStartGame.initActions();
+    thisStartGame.getElementsStart(element);
+    thisStartGame.initActionsStart();
     thisStartGame.activatePage('start-game');
   }
 }

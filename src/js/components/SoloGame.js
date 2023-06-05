@@ -1,65 +1,88 @@
-import { classNames, select, templates } from '../settings.js';
+import { templates, select } from '../settings.js';
 
 class SoloGame {
-  constructor(element, theme, players, grid) {
+  constructor(element, theme, players, grid, domElements, domActions) {
     const thisSoloGame = this;
 
+    thisSoloGame.element = element;
     thisSoloGame.theme = theme;
     thisSoloGame.players = players;
     thisSoloGame.grid = grid;
+    thisSoloGame.domElements = domElements;
+    thisSoloGame.domActions = domActions;
+    thisSoloGame.moves = 0;
 
-    thisSoloGame.element = element;
     thisSoloGame.render();
   }
 
-  getElements() {
+  getElementsSolo() {
     const thisSoloGame = this;
 
-    thisSoloGame.dom.wrapper = thisSoloGame.element;
-    thisSoloGame.menuBtn = thisSoloGame.element.querySelector(select.button.menuButton);
-    thisSoloGame.menuModal = thisSoloGame.element.querySelector(select.modalOf.mobileMenu);
-    thisSoloGame.resumeBtn = thisSoloGame.element.querySelector(select.button.menuResume);
-    thisSoloGame.restartBtn = thisSoloGame.element.querySelector(select.button.menuRestart);
-    thisSoloGame.newGameBtn = thisSoloGame.element.querySelector(select.button.menuNewGame);
-
-    thisSoloGame.testBtn = thisSoloGame.element.querySelector('#endgame-modal-test');
-    thisSoloGame.restartTestBtn = thisSoloGame.element.querySelector('.end__game__newgame__btn');
-    thisSoloGame.endGameModal = thisSoloGame.element.querySelector(select.modalOf.soloEndGame);
+    thisSoloGame.timeDisplay = thisSoloGame.element.querySelector(select.timeDisplay);
+    thisSoloGame.movesDisplay = thisSoloGame.element.querySelector(select.movesDisplay);
+    thisSoloGame.timePauseBtn = thisSoloGame.element.querySelector(select.button.menuButton);
+    thisSoloGame.timeResumeBtn = thisSoloGame.element.querySelector(select.button.menuResume);
+    //  TEST
+    thisSoloGame.testStartBtn = thisSoloGame.element.querySelector('#test-start');
+    thisSoloGame.testMovesBtn = thisSoloGame.element.querySelector('#test-moves');
   }
 
-  initActions() {
+  playerMoves() {
     const thisSoloGame = this;
 
-    thisSoloGame.menuBtn.addEventListener('click', e => {
-      e.preventDefault();
-      thisSoloGame.menuModal.classList.add(classNames.activeMenu);
+    thisSoloGame.testMovesBtn.addEventListener('click', () => {
+      thisSoloGame.moves ++;
+      return thisSoloGame.movesDisplay.innerHTML = thisSoloGame.moves;
+    });
+  }
+
+  time() {
+    const thisSoloGame = this;
+
+    thisSoloGame.startTime = 0;
+    thisSoloGame.elapsedTime = 0;
+    thisSoloGame.currentTime = 0;
+    thisSoloGame.mins = 0;
+    thisSoloGame.secs = 0;
+    thisSoloGame.paused = true;
+    thisSoloGame.intervalId;
+
+    thisSoloGame.testStartBtn.addEventListener('click', () => {
+      if(thisSoloGame.paused) {
+        thisSoloGame.paused = false;
+        thisSoloGame.startTime = Date.now() - thisSoloGame.elapsedTime;
+        thisSoloGame.intervalId = setInterval(updateTime);
+      }
     });
 
-    thisSoloGame.resumeBtn.addEventListener('click', e => {
-      e.preventDefault();
-      thisSoloGame.menuModal.classList.remove(classNames.activeMenu);
+    thisSoloGame.timePauseBtn.addEventListener('click', () => {
+      if(!thisSoloGame.paused) {
+        thisSoloGame.paused = true;
+        thisSoloGame.startTime = Date.now() - thisSoloGame.startTime;
+        clearInterval(thisSoloGame.intervalId);
+      }
     });
 
-    thisSoloGame.restartBtn.addEventListener('click', e => {
-      e.preventDefault();
-      thisSoloGame.render();
+    thisSoloGame.timeResumeBtn.addEventListener('click', () => {
+      if(thisSoloGame.paused && thisSoloGame.startTime != 0) {
+        thisSoloGame.paused = false;
+        thisSoloGame.startTime = Date.now() - thisSoloGame.elapsedTime;
+        thisSoloGame.intervalId = setInterval(updateTime);
+      }
     });
 
-    thisSoloGame.newGameBtn.addEventListener('click', () => {
-      window.location.reload();
-    });
+    function updateTime() {
+      thisSoloGame.elapsedTime = Date.now() - thisSoloGame.startTime;
+      thisSoloGame.secs = Math.floor((thisSoloGame.elapsedTime / 1000) % 60);
+      thisSoloGame.mins = Math.floor((thisSoloGame.elapsedTime / (1000 * 60)) % 60);
+      thisSoloGame.secs = format(thisSoloGame.secs);
 
+      thisSoloGame.timeDisplay.innerHTML = `${thisSoloGame.mins}:${thisSoloGame.secs}`;
 
-    //  TEST BTN
-    thisSoloGame.testBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      thisSoloGame.menuModal.classList.remove(classNames.activeMenu);
-      thisSoloGame.endGameModal.classList.add(classNames.active);
-    });
-
-    thisSoloGame.restartTestBtn.addEventListener('click', () => {
-      window.location.reload();
-    });
+      function format(unit) {
+        return (('0') + unit).length > 2 ? unit : '0' + unit;
+      }
+    }
   }
 
   render() {
@@ -69,8 +92,11 @@ class SoloGame {
     thisSoloGame.dom = {};
     thisSoloGame.dom.wrapper = thisSoloGame.element;
     thisSoloGame.element.innerHTML = generatedHTML;
-    thisSoloGame.getElements();
-    thisSoloGame.initActions();
+    thisSoloGame.domElements();
+    thisSoloGame.domActions();
+    thisSoloGame.getElementsSolo();
+    thisSoloGame.time();
+    thisSoloGame.playerMoves();
   }
 }
 
