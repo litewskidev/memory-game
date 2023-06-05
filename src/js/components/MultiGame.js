@@ -12,8 +12,51 @@ class MultiGame {
     thisMultiGame.domElements = domElements;
     thisMultiGame.domActions = domActions;
     thisMultiGame.playersArray = playersArray;
+    thisMultiGame.turn = 1;
 
     thisMultiGame.render();
+  }
+
+  changeTurn() {
+    if(this.turn <= this.players){
+      this.turn ++;}
+
+    if(this.turn > this.players){
+      this.turn = 1;
+    }
+    this.render();
+  }
+
+  getElementsPlayer() {
+    const thisPlayer = this;
+
+    thisPlayer.playerOne = document.querySelector('#Player-1');
+    thisPlayer.playerTwo = document.querySelector('#Player-2');
+    thisPlayer.playerThree = document.querySelector('#Player-3');
+    thisPlayer.playerFour = document.querySelector('#Player-4');
+  }
+
+  initActionsPlayer() {
+    const thisPlayer = this;
+
+    if(thisPlayer.turn === 1) {
+      thisPlayer.playerOne.classList.add('activeee');
+    }
+    if(thisPlayer.turn === 2) {
+      thisPlayer.playerTwo.classList.add('activeee');
+    }
+    if(thisPlayer.turn === 3) {
+      thisPlayer.playerThree.classList.add('activeee');
+    }
+    if(thisPlayer.turn === 4) {
+      thisPlayer.playerFour.classList.add('activeee');
+    }
+
+    //  TEST
+    thisPlayer.testTurnBtn = document.querySelector('#test-turn');
+    thisPlayer.testTurnBtn.addEventListener('click', () => {
+      this.changeTurn();
+    });
   }
 
   renderPlayers() {
@@ -22,6 +65,7 @@ class MultiGame {
     const playersContainer = document.querySelector(select.containerOf.players);
     const playersList = thisMultiGame.playersArray(thisMultiGame.players);
     thisMultiGame.playersDom = playersList.map(player => new Player(playersContainer, player));
+    return this.playersDom;
   }
 
   render() {
@@ -34,6 +78,8 @@ class MultiGame {
     thisMultiGame.domElements();
     thisMultiGame.domActions();
     thisMultiGame.renderPlayers();
+    thisMultiGame.getElementsPlayer();
+    thisMultiGame.initActionsPlayer();
   }
 }
 

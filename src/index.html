@@ -133,7 +133,7 @@
     <section class="multi__game__widget">
       <div class="game__header">
         <div class="game__logo">
-          <img src="./images/logo.svg"/>
+          <img id="test-turn" src="./images/logo.svg"/>
         </div>
         <div class="game__btns">
           <button class="game__restart__btn">Restart</button>
@@ -195,15 +195,15 @@
   </script>
 
   <script id="template__player__widget" type="text/x-handlebars-template">
-    <div class="multi__game__player__box">
-      <div class="multi__active__player__pattern active__pattern"></div>
+    <div id='{{ playersId }}' class="multi__game__player__box">
+      <div id="active-pattern" class="multi__active__player__pattern"></div>
       <div class="multi__game__player">
-        <div class="game__info active__player">
+        <div id="active-info" class="game__info">
           <p class="player__indicator__desktop">{{ player }}</p>
           <p class="player__indicator__mobile">P{{ playerMobile }}</p>
           <p>{{ pairs }}</p>
         </div>
-        <div class="multi__game__info__current active__turn">
+        <div id="active-current" class="multi__game__info__current">
           <p>Current Turn</p>
         </div>
       </div>

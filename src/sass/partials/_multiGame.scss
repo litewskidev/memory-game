@@ -31,35 +31,41 @@
   display: none;
 }
 
-.active__player {
-  background-color: $orange !important;
+.multi__game__player__box.activeee {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  p {
-    color: $white !important;
+  .game__info {
+    background-color: $orange !important;
+
+    p {
+      color: $white !important;
+    }
   }
-}
 
-.multi__active__player__pattern.active__pattern {
-  display: block;
-  margin-top: -19px;
-  border-color: transparent transparent $orange transparent;
-  border-style: solid;
-  border-width: 0px 19px 19px 19px;
-  height: 0px;
-  width: 0px;
-}
+  .multi__active__player__pattern {
+    display: block;
+    margin-top: -19px;
+    border-color: transparent transparent $orange transparent;
+    border-style: solid;
+    border-width: 0px 19px 19px 19px;
+    height: 0px;
+    width: 0px;
+  }
 
-.multi__game__info__current.active__turn {
-  display: block;
-  text-align: center;
-  margin-bottom: -39px;
+  .multi__game__info__current {
+    display: block;
+    text-align: center;
+    margin-bottom: -39px;
 
-  p {
-    color: $darkblue;
-    font-weight: 700;
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: 5px;
+    p {
+      color: $darkblue;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 16px;
+      letter-spacing: 5px;
+    }
   }
 }
 
@@ -68,8 +74,10 @@
     display: none;
   }
 
-  .multi__game__info__current.active__turn {
-    display: none;
+  .multi__game__player__box.activeee {
+    .multi__game__info__current {
+      display: none;
+    }
   }
 
   .player__indicator__mobile {

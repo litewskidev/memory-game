@@ -6,13 +6,15 @@ class Player {
 
     thisPlayer.element = element;
     thisPlayer.player = player;
+    thisPlayer.pairs = 0;
+
     thisPlayer.render();
   }
 
   render() {
     const thisPlayer = this;
 
-    let playerData = { player: thisPlayer.player, playerMobile: thisPlayer.player.substr(7, 8) };
+    let playerData = { player: thisPlayer.player, playerMobile: thisPlayer.player.substr(7, 8), playersId: thisPlayer.player.replace(' ', '-') };
 
     const generatedHTML = templates.playerWidget(playerData);
     thisPlayer.dom = {};
