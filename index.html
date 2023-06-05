@@ -66,7 +66,7 @@
     <section class="solo__game__widget">
       <div class="game__header">
         <div class="game__logo">
-          <img src="./images/logo.svg"/>
+          <img id="test-start" src="./images/logo.svg"/>
         </div>
         <div class="game__btns">
           <button class="game__restart__btn">Restart</button>
@@ -83,13 +83,13 @@
       </div>
 
       <div class="game__footer">
-        <div class="game__info">
+        <div class="game__info info__solo">
           <p>Time</p>
-          <p>1:59</p>
+          <p id="time-display">0:00</p>
         </div>
-        <div class="game__info">
+        <div id="test-moves" class="game__info info__solo">
           <p>Moves</p>
-          <p>39</p>
+          <p id="moves-display">0</p>
         </div>
       </div>
     </section>
@@ -133,7 +133,7 @@
     <section class="multi__game__widget">
       <div class="game__header">
         <div class="game__logo">
-          <img src="./images/logo.svg"/>
+          <img id="test-turn" src="./images/logo.svg"/>
         </div>
         <div class="game__btns">
           <button class="game__restart__btn">Restart</button>
@@ -148,63 +148,10 @@
         <!-- GAME BOARD -->
 
       </div>
-
-      <div class="game__footer">
-        <div class="multi__game__player__box">
-          <div class="multi__active__player__pattern active__pattern"></div>
-          <div class="multi__game__player">
-            <div class="game__info active__player">
-              <p class="player__indicator__desktop">Player 1</p>
-              <p class="player__indicator__mobile">P1</p>
-              <p>4</p>
-            </div>
-            <div class="multi__game__info__current active__turn">
-              <p>Current Turn</p>
-            </div>
-          </div>
-        </div>
-        <div class="multi__game__player__box">
-          <div class="multi__active__player__pattern"></div>
-          <div class="multi__game__player">
-            <div class="game__info">
-              <p class="player__indicator__desktop">Player 2</p>
-              <p class="player__indicator__mobile">P2</p>
-              <p>4</p>
-            </div>
-            <div class="multi__game__info__current">
-              <p>Current Turn</p>
-            </div>
-          </div>
-        </div>
-        <div class="multi__game__player__box">
-          <div class="multi__active__player__pattern"></div>
-          <div class="multi__game__player">
-            <div class="game__info">
-              <p class="player__indicator__desktop">Player 3</p>
-              <p class="player__indicator__mobile">P3</p>
-              <p>2</p>
-            </div>
-            <div class="multi__game__info__current">
-              <p>Current Turn</p>
-            </div>
-          </div>
-        </div>
-        <div class="multi__game__player__box">
-          <div class="multi__active__player__pattern"></div>
-          <div class="multi__game__player">
-            <div class="game__info">
-              <p class="player__indicator__desktop">Player 4</p>
-              <p class="player__indicator__mobile">P4</p>
-              <p>0</p>
-            </div>
-            <div class="multi__game__info__current">
-              <p>Current Turn</p>
-            </div>
-          </div>
-        </div>
+      <div id="multi-players" class="game__footer"></div>
     </section>
 
-    <section class="multi-end-game-modal-wrapper">
+    <section id="endgame-modal" class="multi-end-game-modal-wrapper">
       <div class="multi__end__game__modal">
         <div class="end__game__header">
           <p class="heading__h1">{{ result }} Player 3 Wins!</p>
@@ -242,6 +189,22 @@
           <button id="mobile-newgame-btn" class="mobile__menu__modal__btn">New Game</button>
           <button id="mobile-resume-btn" class="mobile__menu__modal__btn">Resume Game</button>
           <button id="endgame-modal-test" class="mobile__menu__modal__btn active__menu__btn">Test</button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template__player__widget" type="text/x-handlebars-template">
+    <div id='{{ playersId }}' class="multi__game__player__box">
+      <div id="active-pattern" class="multi__active__player__pattern"></div>
+      <div class="multi__game__player">
+        <div id="active-info" class="game__info">
+          <p class="player__indicator__desktop">{{ player }}</p>
+          <p class="player__indicator__mobile">P{{ playerMobile }}</p>
+          <p>{{ pairs }}</p>
+        </div>
+        <div id="active-current" class="multi__game__info__current">
+          <p>Current Turn</p>
         </div>
       </div>
     </div>
