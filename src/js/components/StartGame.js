@@ -213,7 +213,7 @@ class StartGame {
     thisGame.restartTestBtn.addEventListener('click', () => {
       window.location.reload();
     });
-    
+
   }
 
   initSoloGame() {
