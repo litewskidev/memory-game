@@ -162,6 +162,7 @@ class StartGame {
   }
 
   //  GAME
+
   getElementsGame() {
     const thisGame = this;
 
@@ -201,15 +202,18 @@ class StartGame {
 
 
     //  TEST BTN
+
     thisGame.testBtn.addEventListener('click', (e) => {
       e.preventDefault();
       thisGame.menuModal.classList.remove(classNames.activeMenu);
       thisGame.endGameModal.classList.add(classNames.active);
     });
 
+
     thisGame.restartTestBtn.addEventListener('click', () => {
       window.location.reload();
     });
+    
   }
 
   initSoloGame() {
@@ -246,6 +250,7 @@ class StartGame {
     thisStartGame.initActionsStart();
     thisStartGame.activatePage('start-game');
   }
+
 }
 
 export default StartGame;

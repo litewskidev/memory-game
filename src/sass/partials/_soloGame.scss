@@ -10,9 +10,82 @@
   justify-content: space-between;
 }
 
+#grid-container {
+  width: 100%;
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 6.563rem;
+  margin-bottom: 5.875rem;
+}
+
+.card__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $lightblue;
+  border: none;
+  border-radius: 3.688rem;
+  padding: 1.938rem;
+  width: 7.375rem;
+  height: 7.375rem;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.5s ease-out;
+}
+
+.card__after {
+  position: absolute;
+  z-index: 1;
+  border-radius: 3.688rem;
+}
+
+.card__before {
+  z-index: 2;
+  position: absolute;
+  background-color: $mediumblue;
+  border: none;
+  border-radius: 3.688rem;
+  padding: 1.938rem;
+  width: 7.375rem;
+  height: 7.375rem;
+  cursor: pointer;
+}
+
+.card__container.flipped .card__before {
+  display: none;
+}
+
+.card__container.flipped .card__after {
+
+}
+
+.image {
+  width: 3.5rem;
+  height: 3.5rem;
+  filter: invert(100%) contrast(110%);
+}
+
 @media (max-width: 540px) {
   .solo__game__widget {
     margin-top: 0;
     padding: 1.5rem;
+  }
+
+  #grid-container {
+    gap: 0.768rem;
+    margin-top: 5rem;
+    margin-bottom: 4.375rem;
+  }
+
+  .card__container {
+    width: 4.533rem;
+    height: 4.533rem;
+    padding: 0;
+  }
+
+  .card__before {
+    width: 4.533rem;
+    height: 4.533rem;
+    padding: 0;
   }
 }
