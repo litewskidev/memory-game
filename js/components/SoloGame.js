@@ -31,16 +31,16 @@ class SoloGame {
     let playerWin = false;
 
     const icons = [
-      { name: 'anchor', image: 'https://litewskidev.github.io/images/icons/anchor-solid.svg' },
-      { name: 'bug', image: 'https://litewskidev.github.io/icons/bug-solid.svg' },
-      { name: 'car', image: 'https://litewskidev.github.io/images/icons/car-solid.svg' },
-      { name: 'eye', image: 'https://litewskidev.github.io/images/icons/eye-solid.svg' },
-      { name: 'flask', image: 'https://litewskidev.github.io/images/icons/flask-solid.svg' },
-      { name: 'hand', image: 'https://litewskidev.github.io/images/icons/hand-spock-solid.svg' },
-      { name: 'moon', image: 'https://litewskidev.github.io/images/icons/moon-regular.svg' },
-      { name: 'snow', image: 'https://litewskidev.github.io/images/icons/snowflake-regular.svg' },
-      { name: 'sun', image: 'https://litewskidev.github.io/images/icons/sun-solid.svg' },
-      { name: 'ball', image: 'https://litewskidev.github.io/images/icons/volleyball-solid.svg' }
+      { name: 'anchor', image: './../images/icons/anchor-solid.svg' },
+      { name: 'bug', image: '../images/icons/bug-solid.svg' },
+      { name: 'car', image: 'images/icons/car-solid.svg' },
+      { name: 'eye', image: './images/icons/eye-solid.svg' },
+      { name: 'flask', image: '/images/icons/flask-solid.svg' },
+      { name: 'hand', image: '../../images/icons/hand-spock-solid.svg' },
+      { name: 'moon', image: '../../images/icons/moon-regular.svg' },
+      { name: 'snow', image: '../../images/icons/snowflake-regular.svg' },
+      { name: 'sun', image: '../../images/icons/sun-solid.svg' },
+      { name: 'ball', image: '../../images/icons/volleyball-solid.svg' }
     ];
 
     const time = () => {
