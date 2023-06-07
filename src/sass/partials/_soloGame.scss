@@ -55,10 +55,17 @@
   display: none;
 }
 
-.image {
+.card__image {
   width: 3.5rem;
   height: 3.5rem;
   filter: invert(100%) contrast(110%);
+}
+
+.card__number {
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 69px;
+  color: white;
 }
 
 @media (max-width: 540px) {
@@ -83,5 +90,15 @@
     width: 4.533rem;
     height: 4.533rem;
     padding: 0;
+  }
+
+  .card__image {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .card__number {
+    font-size: 40px;
+    line-height: 50px;
   }
 }

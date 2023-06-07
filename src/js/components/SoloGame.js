@@ -20,6 +20,7 @@ class SoloGame {
     const gridContainer = document.querySelector('#grid-container');
     const endGameModal = document.querySelector(select.modalOf.endGame);
     const endGameMoves = document.querySelector('.end__game__moves');
+    const endGameTime = document.querySelector('.end__game__time');
 
     let cards;
     let firstCard = false;
@@ -27,8 +28,14 @@ class SoloGame {
     let secondCard = false;
     let secondCardValue;
     let moves = 0;
-    let winCount = 0;
-    let playerWin = false;
+    let matchedCount = 0;
+    let mins = 0;
+    let secs = 0;
+    let startTime = 0;
+    let elapsedTime = 0;
+    let paused = true;
+    let intervalId;
+    let themeArray;
 
     const icons = [
       { name: 'anchor', image: 'images/icons/anchor-solid.svg' },
@@ -43,26 +50,17 @@ class SoloGame {
       { name: 'ball', image: 'images/icons/volleyball-solid.svg' }
     ];
 
+    const numbers = [
+      {name: 0}, {name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}, {name: 6}, {name: 7}, {name: 8}, {name: 9}, {name: 10}, {name: 11}, {name: 12}, {name: 13}, {name: 14}, {name: 15}, {name: 16}, {name: 17}, {name: 18}, {name: 19}, {name: 20}
+    ];
+
     const time = () => {
       const thisSoloGame = this;
-
-      let startTime = 0;
-      let elapsedTime = 0;
-      let mins = 0;
-      let secs = 0;
-      let paused = true;
-      let intervalId;
 
       if(paused) {
         paused = false;
         startTime = Date.now() - elapsedTime;
         intervalId = setInterval(updateTime);
-      }
-
-      else if(playerWin === true) {
-        paused = true;
-        startTime = Date.now() - startTime;
-        clearInterval(intervalId);
       }
 
       thisSoloGame.timePauseBtn.addEventListener('click', () => {
@@ -103,15 +101,19 @@ class SoloGame {
 
     const generateRandom = (size) => {
 
-      let tempArray = [...icons];
+      if(thisSoloGame.theme === 'icons') {
+        themeArray = [...icons];
+      } else {
+        themeArray = [...numbers];
+      }
       let cardValues = [];
 
       size = (size * size) / 2;
 
       for (let i = 0; i < size; i++) {
-        const randomIndex = Math.floor(Math.random() * tempArray.length);
-        cardValues.push(tempArray[randomIndex]);
-        tempArray.splice(randomIndex, 1);
+        const randomIndex = Math.floor(Math.random() * themeArray.length);
+        cardValues.push(themeArray[randomIndex]);
+        themeArray.splice(randomIndex, 1);
       }
 
       return cardValues;
@@ -121,14 +123,26 @@ class SoloGame {
       gridContainer.innerHTML = '';
       cardValues = [...cardValues, ...cardValues];
       cardValues.sort(() => Math.random() - 0.7);
-      for(let i = 0; i < size * size; i++) {
-        gridContainer.innerHTML += `
-        <div class="card__container" data-card-value="${cardValues[i].name}">
-          <div class="card__before"></div>
-          <div clas="card__after">
-            <img src="${cardValues[i].image}" class="image" />
-          </div>
-        </div>`;
+      if(thisSoloGame.theme === 'icons') {
+        for(let i = 0; i < size * size; i++) {
+          gridContainer.innerHTML += `
+          <div class="card__container" data-card-value="${cardValues[i].name}">
+            <div class="card__before"></div>
+            <div clas="card__after">
+              <img src="${cardValues[i].image}" class="card__image" />
+            </div>
+          </div>`;
+        }
+      } else {
+        for(let i = 0; i < size * size; i++) {
+          gridContainer.innerHTML += `
+          <div class="card__container" data-card-value="${cardValues[i].name}">
+            <div class="card__before"></div>
+            <div clas="card__after">
+              <p class="card__number">${cardValues[i].name}</p>
+            </div>
+          </div>`;
+        }
       }
 
       gridContainer.style.gridTemplateColumns = `repeat(${size}, auto)`;
@@ -151,13 +165,15 @@ class SoloGame {
                 firstCard.classList.add('matched');
                 secondCard.classList.add('matched');
                 firstCard = false;
-                winCount += 1;
-                if(winCount == Math.floor(cardValues.length / 2)) {
-                  playerWin = true;
-                  console.log(playerWin);
-                  endGameMoves.innerHTML = moves;
+                matchedCount += 1;
+                if(matchedCount == Math.floor(cardValues.length / 2)) {
+                  paused = true;
+                  startTime = Date.now() - startTime;
+                  clearInterval(intervalId);
                   setTimeout(() => {
                     endGameModal.classList.add(classNames.active);
+                    endGameTime.innerHTML = `${mins}:${secs}`;
+                    endGameMoves.innerHTML = moves;
                   }, 500);
                 }
               } else {
@@ -176,8 +192,13 @@ class SoloGame {
     };
 
     const init = () => {
-      let cardValues = generateRandom(4);
-      generateGrid(cardValues, 4);
+      if(thisSoloGame.grid === '4x4'){
+        let cardValues = generateRandom(4);
+        generateGrid(cardValues, 4);
+      } else {
+        let cardValues = generateRandom(6);
+        generateGrid(cardValues, 6);
+      }
       time();
     };
 
