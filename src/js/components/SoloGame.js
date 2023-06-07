@@ -22,7 +22,6 @@ class SoloGame {
     const endGameMoves = document.querySelector('.end__game__moves');
     const endGameTime = document.querySelector('.end__game__time');
 
-    let cards;
     let firstCard = false;
     let firstCardValue;
     let secondCard = false;
@@ -47,7 +46,17 @@ class SoloGame {
       { name: 'moon', image: 'images/icons/moon-regular.svg' },
       { name: 'snow', image: 'images/icons/snowflake-regular.svg' },
       { name: 'sun', image: 'images/icons/sun-solid.svg' },
-      { name: 'ball', image: 'images/icons/volleyball-solid.svg' }
+      { name: 'ball', image: 'images/icons/volleyball-solid.svg' },
+      { name: 'cat', image: 'images/icons/cat-solid.svg' },
+      { name: 'dog', image: 'images/icons/dog-solid.svg' },
+      { name: 'atom', image: 'images/icons/atom-solid.svg' },
+      { name: 'fish', image: 'images/icons/fish-fins-solid.svg' },
+      { name: 'frog', image: 'images/icons/frog-solid.svg' },
+      { name: 'leaf', image: 'images/icons/leaf-solid.svg' },
+      { name: 'paw', image: 'images/icons/paw-solid.svg' },
+      { name: 'robot', image: 'images/icons/robot-solid.svg' },
+      { name: 'rocket', image: 'images/icons/rocket-solid.svg' },
+      { name: 'spider', image: 'images/icons/spider-solid.svg' }
     ];
 
     const numbers = [
@@ -123,32 +132,56 @@ class SoloGame {
       gridContainer.innerHTML = '';
       cardValues = [...cardValues, ...cardValues];
       cardValues.sort(() => Math.random() - 0.7);
-      if(thisSoloGame.theme === 'icons') {
-        for(let i = 0; i < size * size; i++) {
-          gridContainer.innerHTML += `
-          <div class="card__container" data-card-value="${cardValues[i].name}">
-            <div class="card__before"></div>
-            <div clas="card__after">
-              <img src="${cardValues[i].image}" class="card__image" />
-            </div>
-          </div>`;
+      if(thisSoloGame.grid === '4x4'){
+        if(thisSoloGame.theme === 'icons') {
+          for(let i = 0; i < size * size; i++) {
+            gridContainer.innerHTML += `
+            <div class="card__container" data-card-value="${cardValues[i].name}">
+              <div class="card__before"></div>
+              <div clas="card__after">
+                <img src="${cardValues[i].image}" class="card__image" />
+              </div>
+            </div>`;
+          }
+        } else {
+          for(let i = 0; i < size * size; i++) {
+            gridContainer.innerHTML += `
+            <div class="card__container" data-card-value="${cardValues[i].name}">
+              <div class="card__before"></div>
+              <div clas="card__after">
+                <p class="card__number">${cardValues[i].name}</p>
+              </div>
+            </div>`;
+          }
         }
       } else {
-        for(let i = 0; i < size * size; i++) {
-          gridContainer.innerHTML += `
-          <div class="card__container" data-card-value="${cardValues[i].name}">
-            <div class="card__before"></div>
-            <div clas="card__after">
-              <p class="card__number">${cardValues[i].name}</p>
-            </div>
-          </div>`;
+        gridContainer.style.gap = '0.57rem';
+        if(thisSoloGame.theme === 'icons') {
+          for(let i = 0; i < size * size; i++) {
+            gridContainer.innerHTML += `
+            <div class="card__container__6x6" data-card-value="${cardValues[i].name}">
+              <div class="card__before__6x6"></div>
+              <div clas="card__after__6x6">
+                <img src="${cardValues[i].image}" class="card__image__6x6" />
+              </div>
+            </div>`;
+          }
+        } else {
+          for(let i = 0; i < size * size; i++) {
+            gridContainer.innerHTML += `
+            <div class="card__container__6x6" data-card-value="${cardValues[i].name}">
+              <div class="card__before__6x6"></div>
+              <div clas="card__after__6x6">
+                <p class="card__number__6x6">${cardValues[i].name}</p>
+              </div>
+            </div>`;
+          }
         }
       }
 
       gridContainer.style.gridTemplateColumns = `repeat(${size}, auto)`;
 
-      thisSoloGame.cards = document.querySelectorAll('.card__container');
-      console.log(cards);
+      thisSoloGame.cards = document.querySelectorAll(['.card__container', '.card__container__6x6']);
       thisSoloGame.cards.forEach(card => {
         card.addEventListener('click', () => {
           if(!card.classList.contains('matched')) {
@@ -174,7 +207,7 @@ class SoloGame {
                     endGameModal.classList.add(classNames.active);
                     endGameTime.innerHTML = `${mins}:${secs}`;
                     endGameMoves.innerHTML = moves;
-                  }, 500);
+                  }, 200);
                 }
               } else {
                 let [tempFirst, tempSecond] = [firstCard, secondCard];
@@ -183,7 +216,7 @@ class SoloGame {
                 thisSoloGame.delay = setTimeout(() => {
                   tempFirst.classList.remove('flipped');
                   tempSecond.classList.remove('flipped');
-                }, 1000);
+                }, 750);
               }
             }
           }
