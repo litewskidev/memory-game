@@ -174,7 +174,8 @@ class StartGame {
     thisGame.newGameBtn = thisGame.element.querySelector(select.button.menuNewGame);
 
     thisGame.testBtn = thisGame.element.querySelector('#endgame-modal-test');
-    thisGame.restartTestBtn = thisGame.element.querySelector('.end__game__newgame__btn');
+    thisGame.newGameEndGameBtn = thisGame.element.querySelector('.end__game__newgame__btn');
+    thisGame.restartEndGameBtn = thisGame.element.querySelector('.end__game__restart__btn');
     thisGame.endGameModal = thisGame.element.querySelector(select.modalOf.endGame);
   }
 
@@ -200,17 +201,12 @@ class StartGame {
       window.location.reload();
     });
 
-
-    //  TEST BTN
-
-    thisGame.testBtn.addEventListener('click', (e) => {
+    thisGame.restartEndGameBtn.addEventListener('click', e => {
       e.preventDefault();
-      thisGame.menuModal.classList.remove(classNames.activeMenu);
-      thisGame.endGameModal.classList.add(classNames.active);
+      thisGame.render();
     });
 
-
-    thisGame.restartTestBtn.addEventListener('click', () => {
+    thisGame.newGameEndGameBtn.addEventListener('click', () => {
       window.location.reload();
     });
 
