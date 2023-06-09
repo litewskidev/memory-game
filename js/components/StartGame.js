@@ -167,13 +167,15 @@ class StartGame {
     const thisGame = this;
 
     thisGame.dom.wrapper = thisGame.element;
+
+    //  MENU
     thisGame.menuBtn = thisGame.element.querySelector(select.button.menuButton);
     thisGame.menuModal = thisGame.element.querySelector(select.modalOf.mobileMenu);
     thisGame.resumeBtn = thisGame.element.querySelector(select.button.menuResume);
     thisGame.restartBtn = thisGame.element.querySelector(select.button.menuRestart);
     thisGame.newGameBtn = thisGame.element.querySelector(select.button.menuNewGame);
 
-    thisGame.testBtn = thisGame.element.querySelector('#endgame-modal-test');
+    //  END GAME MODAL
     thisGame.newGameEndGameBtn = thisGame.element.querySelector('.end__game__newgame__btn');
     thisGame.restartEndGameBtn = thisGame.element.querySelector('.end__game__restart__btn');
     thisGame.endGameModal = thisGame.element.querySelector(select.modalOf.endGame);
@@ -222,7 +224,7 @@ class StartGame {
   initPlayers(players) {
     const allPlayers = [];
     for(let i = 1; i <= players; i++) {
-      const player = `Player ${i}`;
+      const player = {name:`Player ${i}`, pairs: 0};
       allPlayers.push(player);
     }
     return allPlayers;
