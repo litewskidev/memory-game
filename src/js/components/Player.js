@@ -14,7 +14,7 @@ class Player {
   render() {
     const thisPlayer = this;
 
-    let playerData = { player: thisPlayer.player, playerMobile: thisPlayer.player.substr(7, 8), playersId: thisPlayer.player.replace(' ', '-') };
+    let playerData = { player: thisPlayer.player.name, playerMobile: thisPlayer.player.name.substr(7, 8), playersId: thisPlayer.player.name.replace(' ', '-') };
 
     const generatedHTML = templates.playerWidget(playerData);
     thisPlayer.dom = {};

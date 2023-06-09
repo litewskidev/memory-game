@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -147,7 +146,9 @@
 
       <div>
         <!-- GAME BOARD -->
+        <div id="grid-container">
 
+        </div>
       </div>
       <div id="multi-players" class="game__footer"></div>
     </section>
@@ -155,26 +156,14 @@
     <section id="endgame-modal" class="multi-end-game-modal-wrapper">
       <div class="multi__end__game__modal">
         <div class="end__game__header">
-          <p class="heading__h1">{{ result }} Player 3 Wins!</p>
+          <p id="result-winner" class="heading__h1"></p>
           <p class="text__body">Game over! Here are the results...</p>
         </div>
         <div class="end__game__info__box">
-          <div class="end__game__info winner__player">
-            <p>Player 3 (Winner!)</p>
-            <p>8 Pairs</p>
-          </div>
-          <div class="end__game__info">
-            <p>Player 1</p>
-            <p>4 Pairs</p>
-          </div>
-          <div class="end__game__info">
-            <p>Player 2</p>
-            <p>3 Pairs</p>
-          </div>
-          <div class="end__game__info">
-            <p>Player 4</p>
-            <p>1 Pairs</p>
-          </div>
+          <div class="results__players" id="st-player"></div>
+          <div class="results__players" id="nd-player"></div>
+          <div class="results__players" id="rd-player"></div>
+          <div class="results__players" id="th-player"></div>
         </div>
         <div class="end__game__btns">
           <button class="end__game__restart__btn">Restart</button>
@@ -189,7 +178,6 @@
           <button id="mobile-restart-btn" class="mobile__menu__modal__btn active__menu__btn">Restart</button>
           <button id="mobile-newgame-btn" class="mobile__menu__modal__btn">New Game</button>
           <button id="mobile-resume-btn" class="mobile__menu__modal__btn">Resume Game</button>
-          <button id="endgame-modal-test" class="mobile__menu__modal__btn active__menu__btn">Test</button>
         </div>
       </div>
     </div>
@@ -202,7 +190,7 @@
         <div id="active-info" class="game__info">
           <p class="player__indicator__desktop">{{ player }}</p>
           <p class="player__indicator__mobile">P{{ playerMobile }}</p>
-          <p>{{ pairs }}</p>
+          <p class='{{ playersId }}-pairs'>0</p>
         </div>
         <div id="active-current" class="multi__game__info__current">
           <p>Current Turn</p>
