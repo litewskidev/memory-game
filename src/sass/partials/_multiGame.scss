@@ -69,6 +69,19 @@
   }
 }
 
+@media(max-width: 1024px) {
+
+  .multi__game__widget {
+    margin-top: 2.313rem;
+  }
+
+  .multi__game__player__box.activeee {
+    .multi__game__info__current {
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 540px) {
   .player__indicator__desktop {
     display: none;

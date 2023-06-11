@@ -9,6 +9,7 @@
 # production
 /dist
 /template
+/.vscode
 *.sketch
 *.fig
 *.xd

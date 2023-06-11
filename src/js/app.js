@@ -3,7 +3,7 @@ import { select } from './settings.js';
 
 const app = {
 
-  initStartGame: function() {
+  initGame: function() {
     const thisApp = this;
 
     const startGameContainer = document.querySelector(select.containerOf.startGame);
@@ -13,7 +13,7 @@ const app = {
   init: function() {
     const thisApp = this;
 
-    thisApp.initStartGame();
+    thisApp.initGame();
   }
 };
 

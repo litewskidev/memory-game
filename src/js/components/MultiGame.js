@@ -26,7 +26,7 @@ class MultiGame {
   }
 
   memoryGrid() {
-    const thisSoloGame = this;
+    const thisMultiGame = this;
 
     //  ELEMENTS
     const playersList = this.playersArray(this.players);
@@ -43,6 +43,7 @@ class MultiGame {
     const gridContainer = document.querySelector('#grid-container');
     const endGameModal = document.querySelector(select.modalOf.endGame);
     const endGameResults = document.querySelector('#result-winner');
+    const gameRestart = document.querySelector(select.button.gameRestart);
 
     let firstCard = false;
     let firstCardValue;
@@ -124,8 +125,7 @@ class MultiGame {
     };
 
     const generateRandom = (size) => {
-
-      if(thisSoloGame.theme === 'icons') {
+      if(thisMultiGame.theme === 'icons') {
         themeArray = [...icons];
       } else {
         themeArray = [...numbers];
@@ -150,8 +150,8 @@ class MultiGame {
       gridContainer.innerHTML = '';
       cardValues = [...cardValues, ...cardValues];
       cardValues.sort(() => Math.random() - 0.7);
-      if(thisSoloGame.grid === '4x4'){
-        if(thisSoloGame.theme === 'icons') {
+      if(thisMultiGame.grid === '4x4'){
+        if(thisMultiGame.theme === 'icons') {
           for(let i = 0; i < size * size; i++) {
             gridContainer.innerHTML += `
             <div class="card__container" data-card-value="${cardValues[i].name}">
@@ -174,7 +174,7 @@ class MultiGame {
         }
       } else {
         gridContainer.style.gap = '0.57rem';
-        if(thisSoloGame.theme === 'icons') {
+        if(thisMultiGame.theme === 'icons') {
           for(let i = 0; i < size * size; i++) {
             gridContainer.innerHTML += `
             <div class="card__container__6x6" data-card-value="${cardValues[i].name}">
@@ -245,7 +245,11 @@ class MultiGame {
                     setTimeout(() => {
                       endGameModal.classList.add(classNames.active);
                       playersList.sort((a, b) => b.pairs - a.pairs);
-                      endGameResults.innerHTML = `${playersList[0].name} Wins!`;
+                      if(playersList[0].pairs === playersList[1].pairs || playersList[0].pairs === playersList[2].pairs || playersList[0].pairs === playersList[3].pairs) {
+                        endGameResults.innerHTML = `It's a tie!`;
+                      } else {
+                        endGameResults.innerHTML = `${playersList[0].name} Wins!`;
+                      }
                       if(playersList[0]) {
                         stPlayer.innerHTML = `
                           <div class="end__game__info winner__player">
@@ -254,25 +258,49 @@ class MultiGame {
                           </div>`;
                       }
                       if(playersList[1]) {
-                        ndPlayer.innerHTML = `
-                          <div class="end__game__info">
-                            <p class="st__player">${playersList[1].name}</p>
-                            <p class="st__player__pairs">${playersList[1].pairs}</p>
-                          </div>`;
+                        if(playersList[1].pairs === playersList[0].pairs) {
+                          ndPlayer.innerHTML = `
+                            <div class="end__game__info winner__player">
+                              <p class="st__player">${playersList[1].name} (Winner!)</p>
+                              <p class="st__player__pairs">${playersList[1].pairs}</p>
+                            </div>`;
+                        } else {
+                          ndPlayer.innerHTML = `
+                            <div class="end__game__info">
+                              <p class="st__player">${playersList[1].name}</p>
+                              <p class="st__player__pairs">${playersList[1].pairs}</p>
+                            </div>`;
+                        }
                       }
                       if(playersList[2]) {
-                        rdPlayer.innerHTML = `
-                          <div class="end__game__info">
-                            <p class="st__player">${playersList[2].name}</p>
-                            <p class="st__player__pairs">${playersList[2].pairs}</p>
-                          </div>`;
+                        if(playersList[2].pairs === playersList[0].pairs) {
+                          rdPlayer.innerHTML = `
+                            <div class="end__game__info winner__player">
+                              <p class="st__player">${playersList[2].name} (Winner!)</p>
+                              <p class="st__player__pairs">${playersList[2].pairs}</p>
+                            </div>`;
+                        } else {
+                          rdPlayer.innerHTML = `
+                            <div class="end__game__info">
+                              <p class="st__player">${playersList[2].name}</p>
+                              <p class="st__player__pairs">${playersList[2].pairs}</p>
+                            </div>`;
+                        }
                       }
                       if(playersList[3]) {
-                        thPlayer.innerHTML = `
-                          <div class="end__game__info">
-                            <p class="st__player">${playersList[3].name}</p>
-                            <p class="st__player__pairs">${playersList[3].pairs}</p>
-                          </div>`;
+                        if(playersList[3].pairs === playersList[0].pairs) {
+                          thPlayer.innerHTML = `
+                            <div class="end__game__info winner__player">
+                              <p class="st__player">${playersList[3].name} (Winner!)</p>
+                              <p class="st__player__pairs">${playersList[3].pairs}</p>
+                            </div>`;
+                        } else {
+                          thPlayer.innerHTML = `
+                            <div class="end__game__info">
+                              <p class="st__player">${playersList[3].name}</p>
+                              <p class="st__player__pairs">${playersList[3].pairs}</p>
+                            </div>`;
+                        }
                       }
                       console.log(playersList);
                     }, 200);
@@ -297,9 +325,15 @@ class MultiGame {
       });
     };
 
-    const init = () => {
+    const restartGame = () => {
+      gameRestart.addEventListener('click', e => {
+        e.preventDefault();
+        this.render();
+      });
+    };
 
-      if(thisSoloGame.grid === '4x4'){
+    const init = () => {
+      if(thisMultiGame.grid === '4x4'){
         let cardValues = generateRandom(4);
         generateGrid(cardValues, 4);
       } else {
@@ -307,6 +341,7 @@ class MultiGame {
         generateGrid(cardValues, 6);
       }
       changeActivePlayer();
+      restartGame();
     };
 
     init();

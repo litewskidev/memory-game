@@ -69,6 +69,75 @@
   color: white;
 }
 
+  //  6x6 GRID
+  .card__container__6x6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $lightblue;
+    border: none;
+    border-radius: 3.688rem;
+    cursor: pointer;
+    position: relative;
+    transition: display 0.5s ease-out;
+    width: 5.125rem;
+    height: 5.125rem;
+    padding-top: 0;
+  }
+
+  .card__container__6x6.flipped.matched {
+    display: flex;
+    align-items: center;
+  }
+
+  .card__before__6x6 {
+    z-index: 2;
+    position: absolute;
+    background-color: $mediumblue;
+    border: none;
+    border-radius: 3.688rem;
+    cursor: pointer;
+    width: 5.125rem;
+    height: 5.125rem;
+    padding: 0;
+  }
+
+  .card__after__6x6 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    border-radius: 3.688rem;
+  }
+
+  .card__container__6x6.flipped .card__before__6x6 {
+    display: none;
+  }
+
+  .card__image__6x6 {
+    margin-top: 0.3rem;
+    width: 3rem;
+    height: 3rem;
+    filter: invert(100%) contrast(110%);
+  }
+
+  .card__number__6x6 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 55px;
+    color: white;
+  }
+
+@media(max-width: 1024px) {
+
+  #grid-container {
+    margin-top: 7.563rem;
+    margin-bottom: 5rem;
+  }
+}
+
 @media (max-width: 540px) {
   .solo__game__widget {
     margin-top: 0;
@@ -106,62 +175,23 @@
 
   //  6x6 GRID
   .card__container__6x6 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $lightblue;
-    border: none;
-    border-radius: 3.688rem;
-    cursor: pointer;
-    position: relative;
-    transition: display 0.5s ease-out;
     width: 2.93rem;
     height: 2.93rem;
-    padding-top: 0;
-  }
-
-  .card__container__6x6.flipped.matched {
-    display: flex;
-    align-items: center;
   }
 
   .card__before__6x6 {
-    z-index: 2;
-    position: absolute;
-    background-color: $mediumblue;
-    border: none;
-    border-radius: 3.688rem;
-    cursor: pointer;
     width: 2.93rem;
     height: 2.93rem;
-    padding: 0;
-  }
-
-  .card__after__6x6 {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    border-radius: 3.688rem;
-  }
-
-  .card__container__6x6.flipped .card__before__6x6 {
-    display: none;
   }
 
   .card__image__6x6 {
     margin-top: 0.2rem;
     width: 1.7rem;
     height: 1.7rem;
-    filter: invert(100%) contrast(110%);
   }
 
   .card__number__6x6 {
-    font-style: normal;
-    font-weight: 700;
     font-size: 24px;
     line-height: 30px;
-    color: white;
   }
 }

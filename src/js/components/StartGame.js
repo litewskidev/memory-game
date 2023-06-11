@@ -19,15 +19,15 @@ class StartGame {
     const thisStartGame = this;
 
     thisStartGame.dom.wrapper = element;
-    thisStartGame.dom.numbersBtn = element.querySelector('#numbers-btn');
-    thisStartGame.dom.iconsBtn = element.querySelector('#icons-btn');
-    thisStartGame.dom.onePlayerBtn = element.querySelector('#one-player-btn');
-    thisStartGame.dom.twoPlayersBtn = element.querySelector('#two-players-btn');
-    thisStartGame.dom.threePlayersBtn = element.querySelector('#three-players-btn');
-    thisStartGame.dom.fourPlayersBtn = element.querySelector('#four-players-btn');
-    thisStartGame.dom.grid4x4Btn = element.querySelector('#grid-4x4-btn');
-    thisStartGame.dom.grid6x6Btn = element.querySelector('#grid-6x6-btn');
-    thisStartGame.dom.startGameBtn = element.querySelector('#start-game-btn');
+    thisStartGame.dom.numbersBtn = element.querySelector(select.start.numbers);
+    thisStartGame.dom.iconsBtn = element.querySelector(select.start.icons);
+    thisStartGame.dom.onePlayerBtn = element.querySelector(select.start.onePlayer);
+    thisStartGame.dom.twoPlayersBtn = element.querySelector(select.start.twoPlayers);
+    thisStartGame.dom.threePlayersBtn = element.querySelector(select.start.threePlayers);
+    thisStartGame.dom.fourPlayersBtn = element.querySelector(select.start.fourPlayers);
+    thisStartGame.dom.grid4x4Btn = element.querySelector(select.start.grid4x4);
+    thisStartGame.dom.grid6x6Btn = element.querySelector(select.start.grid6x6);
+    thisStartGame.dom.startGameBtn = element.querySelector(select.start.startGame);
 
     thisStartGame.dom.allPlayersBtn = [thisStartGame.dom.onePlayerBtn, thisStartGame.dom.twoPlayersBtn, thisStartGame.dom.threePlayersBtn, thisStartGame.dom.fourPlayersBtn];
   }
@@ -37,87 +37,79 @@ class StartGame {
 
     thisStartGame.dom.numbersBtn.addEventListener('click', e => {
       e.preventDefault();
-      thisStartGame.changeTheme('numbers');
-      thisStartGame.dom.numbersBtn.classList.add('activeBtn');
-      thisStartGame.dom.iconsBtn.classList.remove('activeBtn');
-      console.log(thisStartGame.theme);
+      thisStartGame.changeTheme(select.theme.numbers);
+      thisStartGame.dom.numbersBtn.classList.add(classNames.activeBtn);
+      thisStartGame.dom.iconsBtn.classList.remove(classNames.activeBtn);
     });
 
     thisStartGame.dom.iconsBtn.addEventListener('click', e => {
       e.preventDefault();
-      thisStartGame.changeTheme('icons');
-      thisStartGame.dom.iconsBtn.classList.add('activeBtn');
-      thisStartGame.dom.numbersBtn.classList.remove('activeBtn');
-      console.log(thisStartGame.theme);
+      thisStartGame.changeTheme(select.theme.icons);
+      thisStartGame.dom.iconsBtn.classList.add(classNames.activeBtn);
+      thisStartGame.dom.numbersBtn.classList.remove(classNames.activeBtn);
     });
 
     thisStartGame.dom.onePlayerBtn.addEventListener('click', e => {
       e.preventDefault();
       thisStartGame.changePlayers(1);
       thisStartGame.dom.allPlayersBtn.forEach((btn) => {
-        btn.classList.remove('activeBtn');
+        btn.classList.remove(classNames.activeBtn);
       });
-      thisStartGame.dom.onePlayerBtn.classList.add('activeBtn');
-      console.log(thisStartGame.players);
+      thisStartGame.dom.onePlayerBtn.classList.add(classNames.activeBtn);
     });
 
     thisStartGame.dom.twoPlayersBtn.addEventListener('click', e => {
       e.preventDefault();
       thisStartGame.changePlayers(2);
       thisStartGame.dom.allPlayersBtn.forEach((btn) => {
-        btn.classList.remove('activeBtn');
+        btn.classList.remove(classNames.activeBtn);
       });
-      thisStartGame.dom.twoPlayersBtn.classList.add('activeBtn');
-      console.log(thisStartGame.players);
+      thisStartGame.dom.twoPlayersBtn.classList.add(classNames.activeBtn);
     });
 
     thisStartGame.dom.threePlayersBtn.addEventListener('click', e => {
       e.preventDefault();
       thisStartGame.changePlayers(3);
       thisStartGame.dom.allPlayersBtn.forEach((btn) => {
-        btn.classList.remove('activeBtn');
+        btn.classList.remove(classNames.activeBtn);
       });
-      thisStartGame.dom.threePlayersBtn.classList.add('activeBtn');
-      console.log(thisStartGame.players);
+      thisStartGame.dom.threePlayersBtn.classList.add(classNames.activeBtn);
     });
 
     thisStartGame.dom.fourPlayersBtn.addEventListener('click', e => {
       e.preventDefault();
       thisStartGame.changePlayers(4);
       thisStartGame.dom.allPlayersBtn.forEach((btn) => {
-        btn.classList.remove('activeBtn');
+        btn.classList.remove(classNames.activeBtn);
       });
-      thisStartGame.dom.fourPlayersBtn.classList.add('activeBtn');
-      console.log(thisStartGame.players);
+      thisStartGame.dom.fourPlayersBtn.classList.add(classNames.activeBtn);
     });
 
     thisStartGame.dom.grid4x4Btn.addEventListener('click', e => {
       e.preventDefault();
-      thisStartGame.changeGrid('4x4');
-      thisStartGame.dom.grid4x4Btn.classList.add('activeBtn');
-      thisStartGame.dom.grid6x6Btn.classList.remove('activeBtn');
-      console.log(thisStartGame.grid);
+      thisStartGame.changeGrid(select.grid.s4x4);
+      thisStartGame.dom.grid4x4Btn.classList.add(classNames.activeBtn);
+      thisStartGame.dom.grid6x6Btn.classList.remove(classNames.activeBtn);
     });
 
     thisStartGame.dom.grid6x6Btn.addEventListener('click', e => {
       e.preventDefault();
-      thisStartGame.changeGrid('6x6');
-      thisStartGame.dom.grid6x6Btn.classList.add('activeBtn');
-      thisStartGame.dom.grid4x4Btn.classList.remove('activeBtn');
-      console.log(thisStartGame.grid);
+      thisStartGame.changeGrid(select.grid.s6x6);
+      thisStartGame.dom.grid6x6Btn.classList.add(classNames.activeBtn);
+      thisStartGame.dom.grid4x4Btn.classList.remove(classNames.activeBtn);
     });
 
     thisStartGame.dom.startGameBtn.addEventListener('click', e => {
       e.preventDefault();
-      thisStartGame.deactivatePage('start-game');
+      thisStartGame.deactivatePage(select.pages.startGame);
 
       if (thisStartGame.players > 1) {
         thisStartGame.initMultiGame();
-        thisStartGame.activatePage('multi-game');
+        thisStartGame.activatePage(select.pages.multiGame);
       }
       else {
         this.initSoloGame();
-        thisStartGame.activatePage('solo-game');
+        thisStartGame.activatePage(select.pages.soloGame);
       }
     });
   }
@@ -144,7 +136,7 @@ class StartGame {
 
     for(let page of thisStartGame.pages) {
       if(page.id === pageId){
-        page.classList.add('active');
+        page.classList.add(classNames.active);
       }
     }
   }
@@ -156,17 +148,18 @@ class StartGame {
 
     for(let page of thisStartGame.pages) {
       if(page.id === pageId){
-        page.classList.remove('active');
+        page.classList.remove(classNames.active);
       }
     }
   }
 
-  //  GAME
-
+  //  INIT GAME
   getElementsGame() {
     const thisGame = this;
-
     thisGame.dom.wrapper = thisGame.element;
+
+    //  GAME
+    thisGame.gameNewGame = thisGame.element.querySelector(select.button.gameNewGame);
 
     //  MENU
     thisGame.menuBtn = thisGame.element.querySelector(select.button.menuButton);
@@ -176,42 +169,44 @@ class StartGame {
     thisGame.newGameBtn = thisGame.element.querySelector(select.button.menuNewGame);
 
     //  END GAME MODAL
-    thisGame.newGameEndGameBtn = thisGame.element.querySelector('.end__game__newgame__btn');
-    thisGame.restartEndGameBtn = thisGame.element.querySelector('.end__game__restart__btn');
+    thisGame.newGameEndGameBtn = thisGame.element.querySelector(select.button.endGameNewGame);
+    thisGame.restartEndGameBtn = thisGame.element.querySelector(select.button.endGameRestart);
     thisGame.endGameModal = thisGame.element.querySelector(select.modalOf.endGame);
   }
 
   initActionsGame() {
     const thisGame = this;
 
+    //  GAME
+    thisGame.gameNewGame.addEventListener('click', () => {
+      window.location.reload();
+    });
+
+    //  MENU
     thisGame.menuBtn.addEventListener('click', e => {
       e.preventDefault();
       thisGame.menuModal.classList.add(classNames.activeMenu);
     });
-
     thisGame.resumeBtn.addEventListener('click', e => {
       e.preventDefault();
       thisGame.menuModal.classList.remove(classNames.activeMenu);
     });
-
     thisGame.restartBtn.addEventListener('click', e => {
       e.preventDefault();
       thisGame.render();
     });
-
     thisGame.newGameBtn.addEventListener('click', () => {
       window.location.reload();
     });
 
+    //  END GAME
     thisGame.restartEndGameBtn.addEventListener('click', e => {
       e.preventDefault();
       thisGame.render();
     });
-
     thisGame.newGameEndGameBtn.addEventListener('click', () => {
       window.location.reload();
     });
-
   }
 
   initSoloGame() {
@@ -224,7 +219,7 @@ class StartGame {
   initPlayers(players) {
     const allPlayers = [];
     for(let i = 1; i <= players; i++) {
-      const player = {name:`Player ${i}`, pairs: 0};
+      const player = { name:`Player ${i}`, pairs: 0 };
       allPlayers.push(player);
     }
     return allPlayers;
@@ -246,9 +241,8 @@ class StartGame {
     element.innerHTML = generatedHTML;
     thisStartGame.getElementsStart(element);
     thisStartGame.initActionsStart();
-    thisStartGame.activatePage('start-game');
+    thisStartGame.activatePage(select.pages.startGame);
   }
-
 }
 
 export default StartGame;

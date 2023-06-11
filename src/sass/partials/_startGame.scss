@@ -100,6 +100,18 @@
   background-color: $mediumblue;
 }
 
+@media(max-width: 1024px) {
+  .start__game__container {
+    padding: 0 7.5%;
+    padding-top: 10.563rem;
+    padding-bottom: 10.5rem;
+  }
+
+  .options__box__small {
+    gap: 1.313rem;
+  }
+}
+
 @media (max-width: 540px) {
   .start__game__container {
     padding: 0 1.5rem;

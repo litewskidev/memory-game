@@ -1,4 +1,10 @@
 export const select ={
+  pages: {
+    startGame: 'start-game',
+    soloGame: 'solo-game',
+    multiGame: 'multi-game'
+  },
+
   templateOf: {
     startGameWidget: '#template__start__game__widget',
     soloGameWidget: '#template__solo__game__widget',
@@ -20,14 +26,40 @@ export const select ={
   },
 
   button: {
+    gameNewGame: '.game__newgame__btn',
+    gameRestart: '.game__restart__btn',
     menuButton: '.game__menu__btn',
     menuResume: '#mobile-resume-btn',
     menuNewGame: '#mobile-newgame-btn',
-    menuRestart: '#mobile-restart-btn'
+    menuRestart: '#mobile-restart-btn',
+    endGameNewGame: '.end__game__newgame__btn',
+    endGameRestart: '.end__game__restart__btn'
+  },
+
+  start: {
+    numbers: '#numbers-btn',
+    icons: '#icons-btn',
+    onePlayer: '#one-player-btn',
+    twoPlayers: '#two-players-btn',
+    threePlayers: '#three-players-btn',
+    fourPlayers: '#four-players-btn',
+    grid4x4: '#grid-4x4-btn',
+    grid6x6: '#grid-6x6-btn',
+    startGame: '#start-game-btn'
+  },
+
+  theme: {
+    numbers: 'numbers',
+    icons: 'icons'
+  },
+
+  grid: {
+    s4x4: '4x4',
+    s6x6: '6x6'
   },
 
   timeDisplay: '#time-display',
-  
+
   movesDisplay: '#moves-display'
 };
 
