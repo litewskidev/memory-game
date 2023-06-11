@@ -129,6 +129,9 @@ class SoloGame {
     };
 
     const generateGrid = (cardValues, size) => {
+      let checkCards = [];
+
+      // GRID
       gridContainer.innerHTML = '';
       cardValues = [...cardValues, ...cardValues];
       cardValues.sort(() => Math.random() - 0.7);
@@ -155,7 +158,11 @@ class SoloGame {
           }
         }
       } else {
-        gridContainer.style.gap = '0.57rem';
+        if(window.matchMedia('(max-width: 540px)').matches) {
+          gridContainer.style.gap = '0.57rem';
+        } else {
+          gridContainer.style.gap = '1rem';
+        }
         if(thisSoloGame.theme === 'icons') {
           for(let i = 0; i < size * size; i++) {
             gridContainer.innerHTML += `
@@ -181,46 +188,69 @@ class SoloGame {
 
       gridContainer.style.gridTemplateColumns = `repeat(${size}, auto)`;
 
+      //  CARDS
       thisSoloGame.cards = document.querySelectorAll(['.card__container', '.card__container__6x6']);
       thisSoloGame.cards.forEach(card => {
         card.addEventListener('click', () => {
-          if(!card.classList.contains('matched')) {
-            card.classList.add('flipped');
-            if(!firstCard) {
-              firstCard = card;
-              firstCardValue = card.getAttribute('data-card-value');
-            }
-            else {
-              playerMoves();
-              secondCard = card;
-              secondCardValue = card.getAttribute('data-card-value');
-              if(firstCardValue == secondCardValue) {
-                firstCard.classList.add('matched');
-                secondCard.classList.add('matched');
-                firstCard = false;
-                matchedCount += 1;
-                if(matchedCount == Math.floor(cardValues.length / 2)) {
-                  paused = true;
-                  startTime = Date.now() - startTime;
-                  clearInterval(intervalId);
+          if(checkCards.length <= 2) {
+            if(!card.classList.contains('matched')) {
+              card.classList.add('flipped');
+              checkCards.push(card);
+              if(!firstCard) {
+                firstCard = card;
+                firstCardValue = card.getAttribute('data-card-value');
+                checkCards.push(firstCard);
+              }
+              else {
+                playerMoves();
+                secondCard = card;
+                secondCardValue = card.getAttribute('data-card-value');
+                if(firstCardValue == secondCardValue) {
+                  firstCard.classList.add('matched');
+                  secondCard.classList.add('matched');
+                  firstCard = false;
+                  matchedCount += 1;
+                  checkCards = [];
+                  if(matchedCount == Math.floor(cardValues.length / 2)) {
+                    paused = true;
+                    startTime = Date.now() - startTime;
+                    clearInterval(intervalId);
+                    setTimeout(() => {
+                      endGameModal.classList.add(classNames.active);
+                      endGameTime.innerHTML = `${mins}:${secs}`;
+                      endGameMoves.innerHTML = moves;
+                    }, 200);
+                  }
+                } else {
+                  let [tempFirst, tempSecond] = [firstCard, secondCard];
+                  firstCard = false;
+                  secondCard = false;
                   setTimeout(() => {
-                    endGameModal.classList.add(classNames.active);
-                    endGameTime.innerHTML = `${mins}:${secs}`;
-                    endGameMoves.innerHTML = moves;
-                  }, 200);
+                    tempFirst.classList.remove('flipped');
+                    tempSecond.classList.remove('flipped');
+                  }, 750);
+                  setTimeout(() => {
+                    checkCards = [];
+                  }, 750);
                 }
-              } else {
-                let [tempFirst, tempSecond] = [firstCard, secondCard];
-                firstCard = false;
-                secondCard = false;
-                thisSoloGame.delay = setTimeout(() => {
-                  tempFirst.classList.remove('flipped');
-                  tempSecond.classList.remove('flipped');
-                }, 750);
               }
             }
           }
         });
+      });
+    };
+
+    const restartGame = () => {
+      thisSoloGame.gameRestart.addEventListener('click', e => {
+        e.preventDefault();
+        paused = true;
+        clearInterval(intervalId);
+        startTime = 0;
+        elapsedTime = 0;
+        mins = 0;
+        secs = 0;
+        thisSoloGame.timeDisplay.innerHTML = `0:00`;
+        this.render();
       });
     };
 
@@ -232,7 +262,11 @@ class SoloGame {
         let cardValues = generateRandom(6);
         generateGrid(cardValues, 6);
       }
-      time();
+      setTimeout(() => {
+        time();
+      }, 200);
+
+      restartGame();
     };
 
     init();
@@ -245,6 +279,7 @@ class SoloGame {
     thisSoloGame.movesDisplay = thisSoloGame.element.querySelector(select.movesDisplay);
     thisSoloGame.timePauseBtn = thisSoloGame.element.querySelector(select.button.menuButton);
     thisSoloGame.timeResumeBtn = thisSoloGame.element.querySelector(select.button.menuResume);
+    thisSoloGame.gameRestart = thisSoloGame.element.querySelector(select.button.gameRestart);
   }
 
   render() {
