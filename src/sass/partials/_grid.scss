@@ -1,0 +1,179 @@
+#grid-container {
+  width: 100%;
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 6.563rem;
+  margin-bottom: 5.875rem;
+}
+
+//  4x4
+.card__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $lightblue;
+  border: none;
+  border-radius: 3.688rem;
+  padding: 1.938rem;
+  width: 7.375rem;
+  height: 7.375rem;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.5s ease-out;
+}
+
+.card__after {
+  position: absolute;
+  z-index: 1;
+  border-radius: 3.688rem;
+}
+
+.card__before {
+  z-index: 2;
+  position: absolute;
+  background-color: $mediumblue;
+  border: none;
+  border-radius: 3.688rem;
+  padding: 1.938rem;
+  width: 7.375rem;
+  height: 7.375rem;
+  cursor: pointer;
+}
+
+.card__container.flipped .card__before {
+  display: none;
+}
+
+.card__image {
+  width: 3.5rem;
+  height: 3.5rem;
+  filter: invert(100%) contrast(110%);
+}
+
+.card__number {
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 69px;
+  color: white;
+}
+
+//  6x6
+.card__container__6x6 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $lightblue;
+  border: none;
+  border-radius: 3.688rem;
+  cursor: pointer;
+  position: relative;
+  transition: display 0.5s ease-out;
+  width: 5.125rem;
+  height: 5.125rem;
+  padding-top: 0;
+}
+
+.card__container__6x6.flipped.matched {
+  display: flex;
+  align-items: center;
+}
+
+.card__before__6x6 {
+  z-index: 2;
+  position: absolute;
+  background-color: $mediumblue;
+  border: none;
+  border-radius: 3.688rem;
+  cursor: pointer;
+  width: 5.125rem;
+  height: 5.125rem;
+  padding: 0;
+}
+
+.card__after__6x6 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  border-radius: 3.688rem;
+}
+
+.card__container__6x6.flipped .card__before__6x6 {
+  display: none;
+}
+
+.card__image__6x6 {
+  margin-top: 0.3rem;
+  width: 3rem;
+  height: 3rem;
+  filter: invert(100%) contrast(110%);
+}
+
+.card__number__6x6 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 55px;
+  color: white;
+}
+
+@media(max-width: 1024px) {
+  #grid-container {
+    margin-top: 7.563rem;
+    margin-bottom: 5rem;
+  }
+}
+
+@media (max-width: 540px) {
+  #grid-container {
+    gap: 0.768rem;
+    margin-top: 5rem;
+    margin-bottom: 4.375rem;
+  }
+
+  // 4x4
+  .card__container {
+    width: 4.533rem;
+    height: 4.533rem;
+    padding: 0;
+  }
+
+  .card__before {
+    width: 4.533rem;
+    height: 4.533rem;
+    padding: 0;
+  }
+
+  .card__image {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .card__number {
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  //  6x6 GRID
+  .card__container__6x6 {
+    width: 2.93rem;
+    height: 2.93rem;
+  }
+
+  .card__before__6x6 {
+    width: 2.93rem;
+    height: 2.93rem;
+  }
+
+  .card__image__6x6 {
+    margin-top: 0.2rem;
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .card__number__6x6 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}

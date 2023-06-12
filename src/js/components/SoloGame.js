@@ -63,13 +63,14 @@ class SoloGame {
       {name: 0}, {name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}, {name: 6}, {name: 7}, {name: 8}, {name: 9}, {name: 10}, {name: 11}, {name: 12}, {name: 13}, {name: 14}, {name: 15}, {name: 16}, {name: 17}, {name: 18}, {name: 19}, {name: 20}
     ];
 
-    const time = () => {
+    const time = (click) => {
       const thisSoloGame = this;
-
-      if(paused) {
-        paused = false;
-        startTime = Date.now() - elapsedTime;
-        intervalId = setInterval(updateTime);
+      if(click === 1) {
+        if(paused) {
+          paused = false;
+          startTime = Date.now() - elapsedTime;
+          intervalId = setInterval(updateTime);
+        }
       }
 
       thisSoloGame.timePauseBtn.addEventListener('click', () => {
@@ -130,6 +131,7 @@ class SoloGame {
 
     const generateGrid = (cardValues, size) => {
       let checkCards = [];
+      let clicked = 0;
 
       // GRID
       gridContainer.innerHTML = '';
@@ -192,6 +194,8 @@ class SoloGame {
       thisSoloGame.cards = document.querySelectorAll(['.card__container', '.card__container__6x6']);
       thisSoloGame.cards.forEach(card => {
         card.addEventListener('click', () => {
+          clicked ++;
+          time(clicked);
           if(checkCards.length <= 2) {
             if(!card.classList.contains('matched')) {
               card.classList.add('flipped');
@@ -262,9 +266,6 @@ class SoloGame {
         let cardValues = generateRandom(6);
         generateGrid(cardValues, 6);
       }
-      setTimeout(() => {
-        time();
-      }, 200);
 
       restartGame();
     };

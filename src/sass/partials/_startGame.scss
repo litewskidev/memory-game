@@ -6,7 +6,6 @@
   width: 100%;
   height: 100vh;
 
-
   h1 {
     color: $white;
   }
@@ -23,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   gap: 4.875rem;
-  padding: 0 27.35%;
+  padding: 0 32.35%;
   padding-top: 9.625rem;
   padding-bottom: 11.438rem;
 }
@@ -100,6 +99,14 @@
   background-color: $mediumblue;
 }
 
+@media(max-width: 1700px) {
+  .start__game__container {
+    padding: 0 27.35%;
+    padding-top: 9.625rem;
+    padding-bottom: 11.438rem;
+  }
+}
+
 @media(max-width: 1024px) {
   .start__game__container {
     padding: 0 7.5%;
@@ -109,6 +116,12 @@
 
   .options__box__small {
     gap: 1.313rem;
+  }
+
+  .btn {
+    &:hover {
+      background-color: $mediumblue;
+    }
   }
 }
 

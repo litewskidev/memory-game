@@ -173,7 +173,11 @@ class MultiGame {
           }
         }
       } else {
-        gridContainer.style.gap = '0.57rem';
+        if(window.matchMedia('(max-width: 540px)').matches) {
+          gridContainer.style.gap = '0.57rem';
+        } else {
+          gridContainer.style.gap = '1rem';
+        }
         if(thisMultiGame.theme === 'icons') {
           for(let i = 0; i < size * size; i++) {
             gridContainer.innerHTML += `
