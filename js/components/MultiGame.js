@@ -322,11 +322,11 @@ class MultiGame {
                   setTimeout(() => {
                     tempFirst.classList.remove('flipped');
                     tempSecond.classList.remove('flipped');
-                  }, 950);
+                  }, 750);
                   setTimeout(() => {
                     changeTurn();
                     checkCards = [];
-                  }, 950);
+                  }, 750);
                 }
               }
             }

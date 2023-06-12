@@ -238,10 +238,10 @@ class SoloGame {
                   setTimeout(() => {
                     tempFirst.classList.remove('flipped');
                     tempSecond.classList.remove('flipped');
-                  }, 750);
+                  }, 550);
                   setTimeout(() => {
                     checkCards = [];
-                  }, 750);
+                  }, 550);
                 }
               }
             }
