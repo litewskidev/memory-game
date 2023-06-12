@@ -1,3 +1,11 @@
+.flipped {
+  background-color: $orange !important;
+}
+
+.matched {
+  background-color: $lightblue !important;
+}
+
 #grid-container {
   width: 100%;
   display: grid;
@@ -19,7 +27,7 @@
   height: 7.375rem;
   cursor: pointer;
   position: relative;
-  transition: transform 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
 }
 
 .card__after {
@@ -38,6 +46,10 @@
   width: 7.375rem;
   height: 7.375rem;
   cursor: pointer;
+
+  &:hover {
+    background-color: $sky;
+  }
 }
 
 .card__container.flipped .card__before {
@@ -71,6 +83,7 @@
   width: 5.125rem;
   height: 5.125rem;
   padding-top: 0;
+  transition: background-color 0.5s ease-out;
 }
 
 .card__container__6x6.flipped.matched {
@@ -88,6 +101,10 @@
   width: 5.125rem;
   height: 5.125rem;
   padding: 0;
+
+  &:hover {
+    background-color: $sky;
+  }
 }
 
 .card__after__6x6 {
@@ -123,6 +140,18 @@
     margin-top: 7.563rem;
     margin-bottom: 5rem;
   }
+
+  .card__before {
+    &:hover {
+      background-color: $mediumblue;
+    }
+  }
+
+  .card__before__6x6 {
+    &:hover {
+      background-color: $mediumblue;
+    }
+  }
 }
 
 @media (max-width: 540px) {
@@ -143,6 +172,10 @@
     width: 4.533rem;
     height: 4.533rem;
     padding: 0;
+
+    &:hover {
+      background-color: $mediumblue;
+    }
   }
 
   .card__image {
@@ -164,6 +197,10 @@
   .card__before__6x6 {
     width: 2.93rem;
     height: 2.93rem;
+
+    &:hover {
+      background-color: $mediumblue;
+    }
   }
 
   .card__image__6x6 {
