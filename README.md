@@ -1,27 +1,16 @@
 # Memory Game
-Try to match pairs
+Try to match pairs! Solo or multiplayer (up to 4 Players) game. Set the theme to use numbers or icons within the tiles. Choose to play on either a 6x6 or 4x4 grid.
 
-# Features:
-- play the Memory Game either solo or multiplayer (up to 4 players)
-- set the theme to use numbers or icons within the tiles
-- choose to play on either a 6x6 or 4x4 grid
-
-# Design:
-- Frontend Mentor
+# Live View:
+- https://memory.litewskidev.usermd.net
 
 # Build with:
-- HTML5
-- JavaScript
-- Handlebars
-- Sass
+HTML5 ∙ JavaScript ∙ SASS ∙ RWD
 
 # Layouts:
-- Mobile
-- Tablet
-- Desktop
+Mobile ∙ Tablet ∙ Desktop
 
-# Links:
-- Live Site URL: http://memory.litewskidev.usermd.net/
-
-# Author
-- Frontend Mentor - [Adrian](https://www.frontendmentor.io/profile/litewskidev)
+# Preview:
+![memory1](Memory1.png)
+![memory2](Memory2.png)
+![memory3](Memory3.png)
